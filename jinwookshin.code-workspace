@@ -1,0 +1,19 @@
+{
+  "folders": [{ "path": "." }],
+  "settings": {
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "editor.rulers": [100],
+    "editor.renderWhitespace": "boundary",
+    "[markdown]": { "editor.wordWrap": "on", "files.trimTrailingWhitespace": false },
+    "search.exclude": { "**/node_modules": true, "**/.next": true }
+  },
+  "extensions": {
+    "recommendations": [
+      "biomejs.biome",
+      "bradlc.vscode-tailwindcss",
+      "unifiedjs.vscode-mdx",
+      "anthropic.claude-code"
+    ]
+  }
+}
