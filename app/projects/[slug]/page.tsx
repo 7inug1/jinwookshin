@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Sidenote } from "@/components/sidenote";
+import { DemoShot } from "@/components/demo-shot";
 import { Decisions } from "@/components/decisions";
 import { projects, getProject } from "@/content/projects";
 
@@ -25,6 +26,20 @@ export default async function ProjectPage({ params }: Params) {
       <p className="label">{project.year}</p>
       <h1 className="display mt-gap-2">{project.title}</h1>
       <p className="measure mt-gap-3 text-ink-2">{project.summary}</p>
+
+      <div className="mt-gap-4 max-w-2xl">
+        {project.image ? (
+          <img
+            src={project.image.src}
+            alt={project.image.alt}
+            width={640}
+            height={400}
+            className="h-auto w-full border border-rule"
+          />
+        ) : (
+          <DemoShot kind={project.shot} label={project.title} />
+        )}
+      </div>
 
       <dl className="rule-list mt-gap-4 text-small">
         <div className="flex gap-gap-3 py-gap-2">

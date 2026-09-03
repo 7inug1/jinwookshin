@@ -7,8 +7,9 @@ export type Project = {
   stack: string[];
   live?: string;
   repo?: string;
-  /** 목록에서 바로 보이는 대표 이미지. 없으면 자리만 비운다 */
+  /** 실제 스크린샷. 없으면 shot의 데모 와이어프레임을 그린다 */
   image?: { src: string; alt: string };
+  shot: "transcript" | "grid";
   /** 표층 아래. 접었다 펴는 자리 */
   decisions: { question: string; answer: string }[];
   body: { text: string; note?: string }[];
@@ -25,6 +26,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Whisper", "pgvector"],
     live: "https://example.com",
     repo: "https://github.com/7inug1",
+    shot: "transcript",
     decisions: [
       {
         question: "유사도가 얼마나 가까워야 답하게 했나",
@@ -65,6 +67,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Vercel"],
     live: "https://example.com",
     repo: "https://github.com/7inug1",
+    shot: "grid",
     decisions: [
       {
         question: "왜 SSR로 이관했나",
