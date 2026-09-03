@@ -8,6 +8,8 @@ export const site = {
   photo: "",
   now: "AI 애플리케이션 엔지니어 자리를 찾고 있다. 국내 스타트업 우선.",
   skills: ["React", "TypeScript", "RAG", "에이전트", "평가"],
+  /** 데모 텍스트. 다른 지원자도 똑같이 쓸 수 있는 말이면 이 줄은 빼는 게 낫다 */
+  offDuty: "달리기 · 오래된 개인 웹사이트 구경 · 영어 팟캐스트",
 };
 
 export const nav = [
