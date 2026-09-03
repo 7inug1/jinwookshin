@@ -4,7 +4,7 @@ import { Sidenote } from "@/components/sidenote";
 import { DemoShot } from "@/components/demo-shot";
 import { Decisions } from "@/components/decisions";
 import { Pager } from "@/components/pager";
-import { Breadcrumb } from "@/components/breadcrumb";
+import { PageTop } from "@/components/page-top";
 import { projects, getProject } from "@/content/projects";
 import { ui } from "@/content/ui";
 import { locales, type Locale } from "@/content/i18n";
@@ -37,16 +37,16 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <article>
-      <Breadcrumb
+      <PageTop
         label={ui.breadcrumb[locale]}
         items={[
           { href: `/${locale}`, label: ui.home[locale] },
           { href: `/${locale}/projects`, label: ui.projects[locale] },
           { label: project.title },
         ]}
+        meta={project.year}
       />
-      <p className="label mt-gap-3">{project.year}</p>
-      <h1 className="display mt-gap-1">{project.title}</h1>
+      <h1 className="display mt-gap-3">{project.title}</h1>
       <p className="measure mt-gap-3 text-ink-2">{project.summary[locale]}</p>
 
       <div className="mt-gap-4 max-w-2xl">
