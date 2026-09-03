@@ -4,7 +4,6 @@ export const site = {
   url: "https://jinwookshin.vercel.app",
   email: "7inug1@gmail.com",
   github: "https://github.com/7inug1",
-  updated: "2026-09-03",
 };
 
 export const nav = [
