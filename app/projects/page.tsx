@@ -13,9 +13,33 @@ export default function ProjectsPage() {
         만든 것과 그때 내린 결정. 목록은 무엇을 정했는지까지, 상세는 그 근거와 측정까지 맡는다.
       </p>
 
+      <nav aria-label="프로젝트 목차" className="mt-gap-4">
+        <h2 className="label mb-gap-1">목차</h2>
+        <ol className="rule-list">
+          {projects.map((project, i) => (
+            <li key={project.slug} className="py-gap-1">
+              <a
+                href={`#${project.slug}`}
+                className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-gap-2 no-underline"
+              >
+                <span className="font-mono text-small text-ink-2 select-none">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="underline underline-offset-2">{project.title}</span>
+                <span className="label">{project.year}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
       <div className="mt-gap-5">
         {projects.map((project) => (
-          <article key={project.slug} className="border-t border-rule py-gap-4">
+          <article
+            key={project.slug}
+            id={project.slug}
+            className="scroll-mt-gap-3 border-t border-rule py-gap-4"
+          >
             <div className="flex items-baseline justify-between gap-gap-3">
               <h2 className="text-title">
                 <Link href={`/projects/${project.slug}`} className="no-underline text-ink-max">
