@@ -4,7 +4,8 @@ import { Sidenote } from "@/components/sidenote";
 import { DemoShot } from "@/components/demo-shot";
 import { Decisions } from "@/components/decisions";
 import { Pager } from "@/components/pager";
-import { PageTop } from "@/components/page-top";
+import { Breadcrumb } from "@/components/breadcrumb";
+import { MetaList } from "@/components/meta-list";
 import { projects, getProject } from "@/content/projects";
 import { ui } from "@/content/ui";
 import { locales, type Locale } from "@/content/i18n";
@@ -37,14 +38,13 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <article>
-      <PageTop
+      <Breadcrumb
         label={ui.breadcrumb[locale]}
         items={[
           { href: `/${locale}`, label: ui.home[locale] },
           { href: `/${locale}/projects`, label: ui.projects[locale] },
           { label: project.title },
         ]}
-        meta={project.year}
       />
       <h1 className="display mt-gap-3">{project.title}</h1>
       <p className="measure mt-gap-3 text-ink-2">{project.summary[locale]}</p>
@@ -63,24 +63,27 @@ export default async function ProjectPage({ params }: Props) {
         )}
       </div>
 
-      <dl className="rule-list mt-gap-4 text-small">
-        <div className="flex gap-gap-3 py-gap-2">
-          <dt className="label w-24 shrink-0">{ui.role[locale]}</dt>
-          <dd>{project.role[locale]}</dd>
-        </div>
-        <div className="flex gap-gap-3 py-gap-2">
-          <dt className="label w-24 shrink-0">{ui.stack[locale]}</dt>
-          <dd className="font-mono text-ink-2">{project.stack.join(" · ")}</dd>
-        </div>
-        {project.live ? (
-          <div className="flex gap-gap-3 py-gap-2">
-            <dt className="label w-24 shrink-0">{ui.links[locale]}</dt>
-            <dd>
-              <a href={project.live}>{project.live.replace(/^https?:\/\//, "")}</a>
-            </dd>
-          </div>
-        ) : null}
-      </dl>
+      <MetaList
+        heading={ui.meta[locale]}
+        rows={[
+          { label: ui.year[locale], value: project.year, mono: true },
+          { label: ui.role[locale], value: project.role[locale] },
+          { label: ui.stack[locale], value: project.stack.join(" · "), mono: true },
+          ...(project.live
+            ? [
+                {
+                  label: ui.links[locale],
+                  value: (
+                    <span className="flex flex-wrap gap-gap-3">
+                      <a href={project.live}>{ui.live[locale]} ↗</a>
+                      {project.repo ? <a href={project.repo}>{ui.repo[locale]} ↗</a> : null}
+                    </span>
+                  ),
+                },
+              ]
+            : []),
+        ]}
+      />
 
       <div className="prose measure mt-gap-5">
         {project.body.map((block) => (

@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Pager } from "@/components/pager";
-import { PageTop } from "@/components/page-top";
+import { Breadcrumb } from "@/components/breadcrumb";
+import { MetaList } from "@/components/meta-list";
 import { posts, getPost } from "@/content/posts";
 import { ui } from "@/content/ui";
 import { locales, type Locale } from "@/content/i18n";
@@ -34,16 +35,25 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <article>
-      <PageTop
+      <Breadcrumb
         label={ui.breadcrumb[locale]}
         items={[
           { href: `/${locale}`, label: ui.home[locale] },
           { href: `/${locale}/blog`, label: ui.blog[locale] },
           { label: post.title[locale] },
         ]}
-        meta={<time dateTime={post.date}>{post.date}</time>}
       />
       <h1 className="display measure mt-gap-3">{post.title[locale]}</h1>
+      <MetaList
+        heading={ui.meta[locale]}
+        rows={[
+          {
+            label: ui.published[locale],
+            value: <time dateTime={post.date}>{post.date}</time>,
+            mono: true,
+          },
+        ]}
+      />
       <div className="prose measure mt-gap-5">
         {post.body.map((paragraph) => (
           <p key={paragraph.en}>{paragraph[locale]}</p>
