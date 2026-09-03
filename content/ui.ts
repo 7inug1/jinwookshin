@@ -29,6 +29,8 @@ export const ui = {
   goHome: { ko: "홈으로", en: "Go home" },
   demoCaption: { ko: "데모 와이어프레임", en: "Demo wireframe" },
   photoCaption: { ko: "사진 자리표시자", en: "Photo placeholder" },
+  home: { ko: "홈", en: "Home" },
+  breadcrumb: { ko: "위치", en: "Breadcrumb" },
   prev: { ko: "이전", en: "Previous" },
   next: { ko: "다음", en: "Next" },
   pagerLabel: { ko: "글 이동", en: "Post navigation" },
