@@ -2,13 +2,6 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "About" };
 
-const budget = [
-  { label: "페이지 무게", target: "100KB", actual: "측정 전" },
-  { label: "LCP", target: "1.5s", actual: "측정 전" },
-  { label: "CLS", target: "0", actual: "측정 전" },
-  { label: "런타임 의존성", target: "10개", actual: "3개" },
-];
-
 export default function AboutPage() {
   return (
     <>
@@ -35,19 +28,6 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <section className="mt-gap-6">
-        <h2 className="label mb-gap-2">예산</h2>
-        <dl className="rule-list text-small">
-          {budget.map((row) => (
-            <div key={row.label} className="flex items-baseline gap-gap-3 py-gap-2">
-              <dt className="w-40 shrink-0">{row.label}</dt>
-              <dd className="font-mono w-24 shrink-0 text-ink-2">{row.target}</dd>
-              <dd className="font-mono text-ink-2">{row.actual}</dd>
-            </div>
-          ))}
-        </dl>
-        <p className="label mt-gap-2">넘으면 기능을 뺀다</p>
-      </section>
     </>
   );
 }
