@@ -4,13 +4,18 @@ import { site } from "@/content/site";
 export function Portrait() {
   if (site.photo) {
     return (
-      <img
-        src={site.photo}
-        alt={`${site.name} 프로필 사진`}
-        width={320}
-        height={400}
-        className="h-auto w-full border border-rule grayscale"
-      />
+      <figure className="m-0">
+        <img
+          src={site.photo}
+          alt={site.photoIsPlaceholder ? "자리표시자 사진" : `${site.name} 프로필 사진`}
+          width={320}
+          height={400}
+          className="aspect-[4/5] w-full border border-rule object-cover grayscale"
+        />
+        {site.photoIsPlaceholder ? (
+          <figcaption className="label mt-gap-1">사진 자리표시자</figcaption>
+        ) : null}
+      </figure>
     );
   }
 
