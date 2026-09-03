@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { Pager } from "@/components/pager";
 import { posts, getPost } from "@/content/posts";
+import { ui } from "@/content/ui";
 import { locales, type Locale } from "@/content/i18n";
 
 type Props = { params: Promise<{ locale: Locale; slug: string }> };
@@ -22,8 +24,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PostPage({ params }: Props) {
   const { locale, slug } = await params;
-  const post = getPost(slug);
+  const index = posts.findIndex((item) => item.slug === slug);
+  const post = posts[index];
   if (!post) notFound();
+
+  const prev = posts[index - 1];
+  const next = posts[index + 1];
 
   return (
     <article>
@@ -36,6 +42,14 @@ export default async function PostPage({ params }: Props) {
           <p key={paragraph.en}>{paragraph[locale]}</p>
         ))}
       </div>
+
+      <Pager
+        label={ui.pagerLabel[locale]}
+        prevLabel={ui.prev[locale]}
+        nextLabel={ui.next[locale]}
+        prev={prev ? { href: `/${locale}/blog/${prev.slug}`, title: prev.title[locale] } : undefined}
+        next={next ? { href: `/${locale}/blog/${next.slug}`, title: next.title[locale] } : undefined}
+      />
     </article>
   );
 }

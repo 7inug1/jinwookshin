@@ -29,6 +29,10 @@ export const ui = {
   goHome: { ko: "홈으로", en: "Go home" },
   demoCaption: { ko: "데모 와이어프레임", en: "Demo wireframe" },
   photoCaption: { ko: "사진 자리표시자", en: "Photo placeholder" },
+  prev: { ko: "이전", en: "Previous" },
+  next: { ko: "다음", en: "Next" },
+  pagerLabel: { ko: "글 이동", en: "Post navigation" },
+  projectPagerLabel: { ko: "프로젝트 이동", en: "Project navigation" },
   switchCode: { ko: "EN", en: "KO" },
   switchLabel: { ko: "Switch to English", en: "한국어로 전환" },
 } satisfies Record<string, L>;
