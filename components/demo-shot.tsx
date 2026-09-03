@@ -67,7 +67,18 @@ const shots = { transcript: Transcript, grid: Grid };
 
 export type DemoShotKind = keyof typeof shots;
 
-export function DemoShot({ kind, label }: { kind: DemoShotKind; label: string }) {
+import { ui } from "@/content/ui";
+import type { Locale } from "@/content/i18n";
+
+export function DemoShot({
+  kind,
+  label,
+  locale,
+}: {
+  kind: DemoShotKind;
+  label: string;
+  locale: Locale;
+}) {
   const Shape = shots[kind];
   return (
     <figure className="m-0">
@@ -76,11 +87,11 @@ export function DemoShot({ kind, label }: { kind: DemoShotKind; label: string })
         className="block h-auto w-full text-ink"
         fill="currentColor"
         role="img"
-        aria-label={`${label} 데모 와이어프레임`}
+        aria-label={`${label} — ${ui.demoCaption[locale]}`}
       >
         <Shape />
       </svg>
-      <figcaption className="label mt-gap-1">데모 와이어프레임</figcaption>
+      <figcaption className="label mt-gap-1">{ui.demoCaption[locale]}</figcaption>
     </figure>
   );
 }

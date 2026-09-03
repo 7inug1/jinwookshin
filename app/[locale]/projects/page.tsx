@@ -2,19 +2,26 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { DemoShot } from "@/components/demo-shot";
 import { projects } from "@/content/projects";
+import { ui } from "@/content/ui";
+import type { Locale } from "@/content/i18n";
 
-export const metadata: Metadata = { title: "Projects" };
+type Props = { params: Promise<{ locale: Locale }> };
 
-export default function ProjectsPage() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return { title: ui.projects[locale], alternates: { canonical: `/${locale}/projects` } };
+}
+
+export default async function ProjectsPage({ params }: Props) {
+  const { locale } = await params;
+
   return (
     <>
-      <h1 className="display">Projects</h1>
-      <p className="measure mt-gap-2 text-small text-ink-2">
-        만든 것과 그때 내린 결정. 목록은 무엇을 정했는지까지, 상세는 그 근거와 측정까지 맡는다.
-      </p>
+      <h1 className="display">{ui.projects[locale]}</h1>
+      <p className="measure mt-gap-2 text-small text-ink-2">{ui.projectsLead[locale]}</p>
 
-      <nav aria-label="프로젝트 목차" className="mt-gap-4">
-        <h2 className="label mb-gap-1">목차</h2>
+      <nav aria-label={ui.tocLabel[locale]} className="mt-gap-4">
+        <h2 className="label mb-gap-1">{ui.toc[locale]}</h2>
         <ol className="rule-list">
           {projects.map((project, i) => (
             <li key={project.slug} className="py-gap-1">
@@ -42,7 +49,7 @@ export default function ProjectsPage() {
           >
             <div className="flex items-baseline justify-between gap-gap-3">
               <h2 className="text-title">
-                <Link href={`/projects/${project.slug}`} className="no-underline text-ink-max">
+                <Link href={`/${locale}/projects/${project.slug}`} className="no-underline text-ink-max">
                   {project.title}
                 </Link>
               </h2>
@@ -51,50 +58,48 @@ export default function ProjectsPage() {
 
             <div className="mt-gap-3 grid gap-gap-4 lg:grid-cols-[1fr_18rem]">
               <div className="min-w-0">
-                <p className="measure text-small">{project.summary}</p>
+                <p className="measure text-small">{project.summary[locale]}</p>
 
-                <dl className="mt-gap-3 grid grid-cols-[3.5rem_1fr] gap-x-gap-3 gap-y-gap-2 text-small">
-                  <dt className="label pt-[0.25em]">역할</dt>
-                  <dd>{project.role}</dd>
+                <dl className="mt-gap-3 grid grid-cols-[4rem_1fr] gap-x-gap-3 gap-y-gap-2 text-small">
+                  <dt className="label pt-[0.25em]">{ui.role[locale]}</dt>
+                  <dd>{project.role[locale]}</dd>
 
-                  <dt className="label pt-[0.25em]">스택</dt>
+                  <dt className="label pt-[0.25em]">{ui.stack[locale]}</dt>
                   <dd className="font-mono text-ink-2">{project.stack.join(" · ")}</dd>
 
-                  <dt className="label pt-[0.25em]">결정</dt>
+                  <dt className="label pt-[0.25em]">{ui.decisions[locale]}</dt>
                   <dd>
                     <ol className="text-ink-2">
                       {project.decisions.map((decision, i) => (
-                        <li key={decision.question}>
+                        <li key={decision.question.en}>
                           <span className="font-mono mr-2 select-none">
                             {String(i + 1).padStart(2, "0")}
                           </span>
-                          {decision.question}
+                          {decision.question[locale]}
                         </li>
                       ))}
                     </ol>
                   </dd>
 
-                  <dt className="label pt-[0.25em]">링크</dt>
+                  <dt className="label pt-[0.25em]">{ui.links[locale]}</dt>
                   <dd className="flex flex-wrap gap-gap-3">
-                    <Link href={`/projects/${project.slug}`}>상세</Link>
-                    {project.live ? <a href={project.live}>라이브 ↗</a> : null}
-                    {project.repo ? <a href={project.repo}>저장소 ↗</a> : null}
+                    <Link href={`/${locale}/projects/${project.slug}`}>{ui.detail[locale]}</Link>
+                    {project.live ? <a href={project.live}>{ui.live[locale]} ↗</a> : null}
+                    {project.repo ? <a href={project.repo}>{ui.repo[locale]} ↗</a> : null}
                   </dd>
                 </dl>
               </div>
 
               {project.image ? (
-                <figure className="m-0">
-                  <img
-                    src={project.image.src}
-                    alt={project.image.alt}
-                    width={640}
-                    height={400}
-                    className="h-auto w-full border border-rule"
-                  />
-                </figure>
+                <img
+                  src={project.image.src}
+                  alt={project.image.alt[locale]}
+                  width={640}
+                  height={400}
+                  className="h-auto w-full border border-rule"
+                />
               ) : (
-                <DemoShot kind={project.shot} label={project.title} />
+                <DemoShot kind={project.shot} label={project.title} locale={locale} />
               )}
             </div>
           </article>

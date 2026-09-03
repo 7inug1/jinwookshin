@@ -1,0 +1,33 @@
+import type { L } from "./i18n";
+
+export const ui = {
+  skipToContent: { ko: "본문 바로가기", en: "Skip to content" },
+  nav: { ko: "주요", en: "Primary" },
+  projects: { ko: "Projects", en: "Projects" },
+  blog: { ko: "Blog", en: "Blog" },
+  about: { ko: "About", en: "About" },
+  toc: { ko: "목차", en: "Contents" },
+  tocLabel: { ko: "프로젝트 목차", en: "Project contents" },
+  role: { ko: "역할", en: "Role" },
+  stack: { ko: "스택", en: "Stack" },
+  decisions: { ko: "결정", en: "Decisions" },
+  links: { ko: "링크", en: "Links" },
+  detail: { ko: "상세", en: "Detail" },
+  live: { ko: "라이브", en: "Live" },
+  repo: { ko: "저장소", en: "Repo" },
+  now: { ko: "지금", en: "Now" },
+  skills: { ko: "다루는 것", en: "Working with" },
+  offDuty: { ko: "쉴 때", en: "Off duty" },
+  see: { ko: "보기", en: "See" },
+  contact: { ko: "이메일", en: "Email" },
+  decisionsHeading: { ko: "결정과 측정", en: "Decisions and measurements" },
+  projectsLead: {
+    ko: "만든 것과 그때 내린 결정. 목록은 무엇을 정했는지까지, 상세는 그 근거와 측정까지 맡는다.",
+    en: "What I built and what I decided. The list carries the questions; the detail carries the answers.",
+  },
+  notFound: { ko: "여기에는 아무것도 없다.", en: "Nothing lives here." },
+  goHome: { ko: "홈으로", en: "Go home" },
+  demoCaption: { ko: "데모 와이어프레임", en: "Demo wireframe" },
+  photoCaption: { ko: "사진 자리표시자", en: "Photo placeholder" },
+  switchTo: { ko: "English", en: "한국어" },
+} satisfies Record<string, L>;

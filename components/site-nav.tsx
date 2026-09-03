@@ -2,20 +2,23 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { nav } from "@/content/site";
+import { nav, site } from "@/content/site";
+import { ui } from "@/content/ui";
+import type { Locale } from "@/content/i18n";
 
-export function SiteNav() {
+export function SiteNav({ locale }: { locale: Locale }) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="주요">
+    <nav aria-label={ui.nav[locale]}>
       <ul className="flex gap-gap-3">
         {nav.map((item) => {
-          const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+          const href = `/${locale}${item.href}`;
+          const active = pathname === href || pathname.startsWith(`${href}/`);
           return (
             <li key={item.href}>
               <Link
-                href={item.href}
+                href={href}
                 aria-current={active ? "page" : undefined}
                 className={
                   active
@@ -23,7 +26,7 @@ export function SiteNav() {
                     : "text-small font-medium text-ink no-underline hover:text-ink-max"
                 }
               >
-                {item.label}
+                {ui[item.key][locale]}
               </Link>
             </li>
           );
@@ -32,3 +35,5 @@ export function SiteNav() {
     </nav>
   );
 }
+
+export { site };
