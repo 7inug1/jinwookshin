@@ -29,5 +29,6 @@ export const ui = {
   goHome: { ko: "홈으로", en: "Go home" },
   demoCaption: { ko: "데모 와이어프레임", en: "Demo wireframe" },
   photoCaption: { ko: "사진 자리표시자", en: "Photo placeholder" },
-  switchTo: { ko: "English", en: "한국어" },
+  switchCode: { ko: "EN", en: "KO" },
+  switchLabel: { ko: "Switch to English", en: "한국어로 전환" },
 } satisfies Record<string, L>;

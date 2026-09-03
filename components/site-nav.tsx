@@ -11,7 +11,7 @@ export function SiteNav({ locale }: { locale: Locale }) {
 
   return (
     <nav aria-label={ui.nav[locale]}>
-      <ul className="flex gap-gap-3">
+      <ul className="flex items-center gap-gap-3">
         {nav.map((item) => {
           const href = `/${locale}${item.href}`;
           const active = pathname === href || pathname.startsWith(`${href}/`);
