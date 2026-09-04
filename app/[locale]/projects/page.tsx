@@ -57,7 +57,18 @@ export default async function ProjectsPage({ params }: Props) {
               <p className="label shrink-0">{project.year}</p>
             </div>
 
-            <div className="mt-gap-3 grid gap-gap-4 lg:grid-cols-[1fr_18rem]">
+            <div className="mt-gap-3 grid gap-gap-4 lg:grid-cols-[20rem_1fr]">
+              {project.image ? (
+                <img
+                  src={project.image.src}
+                  alt={project.image.alt[locale]}
+                  width={640}
+                  height={400}
+                  className="h-auto w-full border border-rule"
+                />
+              ) : (
+                <DemoShot kind={project.shot} label={project.title} locale={locale} />
+              )}
               <div className="min-w-0">
                 <p className="measure text-small">{project.summary[locale]}</p>
 
@@ -90,18 +101,6 @@ export default async function ProjectsPage({ params }: Props) {
                   </dd>
                 </dl>
               </div>
-
-              {project.image ? (
-                <img
-                  src={project.image.src}
-                  alt={project.image.alt[locale]}
-                  width={640}
-                  height={400}
-                  className="h-auto w-full border border-rule"
-                />
-              ) : (
-                <DemoShot kind={project.shot} label={project.title} locale={locale} />
-              )}
             </div>
           </article>
         ))}
