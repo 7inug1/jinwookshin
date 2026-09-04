@@ -20,7 +20,7 @@ export default async function ProjectsPage({ params }: Props) {
       <h1 className="display">{ui.projects[locale]}</h1>
       <nav aria-label={ui.tocLabel[locale]} className="mt-gap-4">
         <h2 className="label mb-gap-1">{ui.toc[locale]}</h2>
-        <ol className="rule-list">
+        <ol className="rule-list [&>li:last-child]:border-b-0">
           {projects.map((project, i) => (
             <li key={project.slug} className="py-gap-1">
               <a
