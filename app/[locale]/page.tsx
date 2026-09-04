@@ -15,7 +15,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
   return (
     <>
-      <section className="grid gap-gap-4 sm:grid-cols-[10rem_1fr] sm:gap-gap-5">
+      <section className="grid items-stretch gap-gap-4 sm:grid-cols-[10rem_1fr] sm:gap-gap-5">
         <Portrait locale={locale} />
 
         <div className="min-w-0">
