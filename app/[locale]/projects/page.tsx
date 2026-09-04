@@ -18,8 +18,6 @@ export default async function ProjectsPage({ params }: Props) {
   return (
     <>
       <h1 className="display">{ui.projects[locale]}</h1>
-      <p className="measure mt-gap-2 text-small text-ink-2">{ui.projectsLead[locale]}</p>
-
       <nav aria-label={ui.tocLabel[locale]} className="mt-gap-4">
         <h2 className="label mb-gap-1">{ui.toc[locale]}</h2>
         <ol className="rule-list">
@@ -41,13 +39,16 @@ export default async function ProjectsPage({ params }: Props) {
       </nav>
 
       <div className="mt-gap-5">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <article
             key={project.slug}
             id={project.slug}
             className="scroll-mt-gap-3 border-t border-rule py-gap-4"
           >
-            <div className="flex items-baseline justify-between gap-gap-3">
+            <div className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-gap-2">
+              <span className="font-mono text-small text-ink-2 select-none">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <h2 className="text-title">
                 <Link href={`/${locale}/projects/${project.slug}`} className="no-underline text-ink-max">
                   {project.title}

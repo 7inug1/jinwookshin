@@ -21,10 +21,6 @@ export const ui = {
   see: { ko: "보기", en: "See" },
   contact: { ko: "이메일", en: "Email" },
   decisionsHeading: { ko: "결정과 측정", en: "Decisions and measurements" },
-  projectsLead: {
-    ko: "만든 것과 그때 내린 결정. 목록은 무엇을 정했는지까지, 상세는 그 근거와 측정까지 맡는다.",
-    en: "What I built and what I decided. The list carries the questions; the detail carries the answers.",
-  },
   notFound: { ko: "여기에는 아무것도 없다.", en: "Nothing lives here." },
   goHome: { ko: "홈으로", en: "Go home" },
   demoCaption: { ko: "데모 와이어프레임", en: "Demo wireframe" },
