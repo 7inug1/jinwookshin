@@ -14,10 +14,6 @@ export const site = {
   photo: "/portrait-placeholder.jpg",
   photoIsPlaceholder: true,
 
-  kicker: {
-    ko: "Frontend 3.5y → AI Application Engineer",
-    en: "Frontend 3.5y → AI Application Engineer",
-  } satisfies L,
   greeting: { ko: "안녕하세요, 신진욱입니다.", en: "Hello, I'm Jinwook Shin." } satisfies L,
   lead: {
     ko: "프론트엔드를 3년 6개월 만들었고, 지금은 AI 제품이 동작하는 구조를 만듭니다.",

@@ -19,8 +19,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
         <Portrait locale={locale} />
 
         <div className="min-w-0">
-          <p className="label">{site.kicker[locale]}</p>
-          <h1 className="display measure mt-gap-2">{site.greeting[locale]}</h1>
+          <h1 className="display measure">{site.greeting[locale]}</h1>
           <p className="measure mt-gap-3 text-title">{site.lead[locale]}</p>
           <div className="prose measure mt-gap-3 text-small text-ink-2">
             <p>{site.intro[locale]}</p>
