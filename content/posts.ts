@@ -27,7 +27,7 @@ export const posts: Post[] = [
       ko: "bi-encoder에서 정답 청크는 항상 검색 순위 최상위권에 들까?",
       en: "Does the right chunk always rank at the top with a bi-encoder?",
     },
-    date: "2026-09-05",
+    date: "2026-07-30",
     summary: {
       ko: "정답이 4등과 17등에 있었다. 17등 청크에서 정답 부분만 떼어 다시 재니 0.486이 0.774가 됐다.",
       en: "The answer sat at rank 4 and rank 17. Splitting the answer out of the rank-17 chunk moved its score from 0.486 to 0.774.",
