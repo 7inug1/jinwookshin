@@ -174,25 +174,6 @@ export const posts: Post[] = [
       ),
     ],
   },
-  {
-    slug: "why-no-color",
-    title: { ko: "이 사이트에 색이 없는 이유", en: "Why this site has no color" },
-    date: "2026-09-01",
-    summary: {
-      ko: "무채색만 쓰기로 한 결정과 그 근거.",
-      en: "The decision to stay grayscale, and what it rests on.",
-    },
-    body: [
-      p(
-        "강조색을 하나 두려다 그만뒀다. 링크를 파랗게 만드는 순간 나머지 색을 다 정해야 했다.",
-        "I nearly added one accent. The moment links turned blue, every other color needed deciding too.",
-      ),
-      p(
-        "색이 필요한 자리는 작업물 스크린샷뿐이었다. 그러면 UI에는 색이 없는 편이 낫다.",
-        "The only place that needed color was the screenshots. So the interface keeps none.",
-      ),
-    ],
-  },
 ];
 
 export const getPost = (slug: string) => posts.find((post) => post.slug === slug);
