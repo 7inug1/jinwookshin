@@ -55,9 +55,23 @@ export default async function PostPage({ params }: Props) {
         ]}
       />
       <div className="prose measure mt-gap-5">
-        {post.body.map((paragraph) => (
-          <p key={paragraph.en}>{paragraph[locale]}</p>
-        ))}
+        {post.body.map((block, i) => {
+          if (block.type === "rule") {
+            return <hr key={i} className="border-0 border-t border-rule" />;
+          }
+          if (block.type === "aside") {
+            return (
+              <aside key={i} className="border-l border-rule pl-gap-3 text-small text-ink-2">
+                {block.lines.map((line) => (
+                  <p key={line.en} className="mt-gap-2 first:mt-0">
+                    {line[locale]}
+                  </p>
+                ))}
+              </aside>
+            );
+          }
+          return <p key={block.text.en}>{block.text[locale]}</p>;
+        })}
       </div>
 
       <Pager
