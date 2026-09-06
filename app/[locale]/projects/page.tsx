@@ -73,11 +73,17 @@ export default async function ProjectsPage({ params }: Props) {
               <div className="min-w-0">
                 <p className="measure text-small">{project.summary[locale]}</p>
 
-                <ul className="mt-gap-3 font-mono text-small text-ink-2">
-                  {project.stack.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                {project.stackLayout === "list" ? (
+                  <ul className="mt-gap-3 font-mono text-small text-ink-2">
+                    {project.stack.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-gap-2 font-mono text-small text-ink-2">
+                    {project.stack.join(" · ")}
+                  </p>
+                )}
 
                 {/* 덮개 위로 올려 개별 링크가 계속 눌리게 한다 */}
                 <p className="relative z-10 mt-gap-2 flex flex-wrap gap-gap-3 text-small">

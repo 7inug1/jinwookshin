@@ -11,6 +11,8 @@ export type Project = {
   image?: { src: string; alt: L };
   /** 화면 비율. 기본은 16:10, 세로가 긴 화면은 3:4 */
   imageAspect?: "16/10" | "3/4";
+  /** 목록에서 스택을 세우는 방식. 이미지가 길면 세로로 세워 높이를 맞춘다 */
+  stackLayout?: "inline" | "list";
   shot: "transcript" | "grid";
   decisions: { label: L; text: L }[];
   body: { text: L; note?: L }[];
@@ -131,6 +133,7 @@ export const projects: Project[] = [
       },
     },
     imageAspect: "3/4",
+    stackLayout: "list",
     decisions: [
       {
         label: {
