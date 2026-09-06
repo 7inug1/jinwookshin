@@ -26,8 +26,8 @@ export const site = {
     url: "https://www.aiceltech.com",
   },
   intro: {
-    ko: "{company}에서 3년 6개월 동안 금융 데이터 서비스의 프론트엔드를 맡았습니다. 유지 보수를 넘어 AI 투자 비서 epic AI를 팀과 함께 1년 6개월 동안 처음부터 만들어 런칭했습니다. 그전에는 문과에서 진로를 바꿔 캐나다 밴쿠버에서 컴퓨터공학을, 바닐라코딩에서 프론트엔드를 공부했습니다.",
-    en: "For three and a half years at {company} I owned the frontend of a financial data service. Beyond maintenance, I spent eighteen months building epic AI — an AI investment assistant — with the team and shipping it. Before that I switched out of a humanities track: computer science in Vancouver, frontend at Vanilla Coding.",
+    ko: "{company}에서 3년 6개월 동안 금융 데이터 서비스의 프론트엔드를 맡았습니다. 유지 보수를 넘어 AI 투자 비서 epic AI를 팀과 함께 1년 6개월 동안 처음부터 만들어 런칭했습니다. 그전에는 문과에서 진로를 바꿔 캐나다 밴쿠버에서 프로그래밍을 공부했고, 바닐라코딩 부트캠프에서 프론트엔드에 대한 전문성을 키웠습니다.",
+    en: "For three and a half years at {company} I owned the frontend of a financial data service. Beyond maintenance, I spent eighteen months building epic AI — an AI investment assistant — with the team and shipping it. Before that I switched out of a humanities track — programming in Vancouver, then frontend depth at the Vanilla Coding bootcamp.",
   } satisfies L,
   builds: {
     ko: "2026년 2월에 퇴사하고 제품을 0에서 1로 두 번 만들었습니다. VIZUDEN은 기획과 개발, 배포를 혼자 하고 도메인을 사서 지금도 운영하고 있습니다. Digestube는 유튜브 영상을 전사해 문단 단위로 검색하고 답하는 RAG 서비스이고, 근거가 약하면 답하지 않도록 선을 그었습니다. 화면을 만들던 사람이라 모델이 낸 결과가 사용자에게 어떻게 닿는지까지 함께 봅니다.",
