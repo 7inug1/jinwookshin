@@ -9,14 +9,14 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
   return (
     <>
-      <section>
-        {/* 세로 배치. 사진이 먼저 오고 글이 아래로 이어진다 */}
-        <div className="max-w-sm">
+      <section className="text-center">
+        {/* 세로 중앙 배치. 사진이 먼저 오고 글이 아래로 이어진다 */}
+        <div className="mx-auto max-w-sm">
           <Portrait locale={locale} />
         </div>
 
-        <h1 className="display measure mt-gap-4">{site.greeting[locale]}</h1>
-        <div className="prose measure mt-gap-3">
+        <h1 className="display measure mx-auto mt-gap-4">{site.greeting[locale]}</h1>
+        <div className="prose measure mx-auto mt-gap-3">
           <p>{site.intro[locale]}</p>
           <p>{site.builds[locale]}</p>
           <p className="italic text-ink-2">{site.availability[locale]}</p>
