@@ -76,34 +76,15 @@ export default async function ProjectsPage({ params }: Props) {
               <div className="min-w-0">
                 <p className="measure text-small">{project.summary[locale]}</p>
 
-                <dl className="mt-gap-3 grid grid-cols-[4rem_1fr] gap-x-gap-3 gap-y-gap-2 text-small">
-                  <dt className="label pt-[0.25em]">{ui.role[locale]}</dt>
-                  <dd>{project.role[locale]}</dd>
+                <p className="mt-gap-2 font-mono text-small text-ink-2">
+                  {project.stack.join(" · ")}
+                </p>
 
-                  <dt className="label pt-[0.25em]">{ui.stack[locale]}</dt>
-                  <dd className="font-mono text-ink-2">{project.stack.join(" · ")}</dd>
-
-                  <dt className="label pt-[0.25em]">{ui.decisions[locale]}</dt>
-                  <dd>
-                    <ol className="text-ink-2">
-                      {project.decisions.map((decision, i) => (
-                        <li key={decision.question.en}>
-                          <span className="font-mono mr-2 select-none">
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
-                          {decision.question[locale]}
-                        </li>
-                      ))}
-                    </ol>
-                  </dd>
-
-                  <dt className="label pt-[0.25em]">{ui.links[locale]}</dt>
-                  {/* 덮개 위로 올려 개별 링크가 계속 눌리게 한다 */}
-                  <dd className="relative z-10 flex flex-wrap gap-gap-3">
-                    {project.live ? <a href={project.live}>{ui.live[locale]} ↗</a> : null}
-                    {project.repo ? <a href={project.repo}>{ui.repo[locale]} ↗</a> : null}
-                  </dd>
-                </dl>
+                {/* 덮개 위로 올려 개별 링크가 계속 눌리게 한다 */}
+                <p className="relative z-10 mt-gap-2 flex flex-wrap gap-gap-3 text-small">
+                  {project.live ? <a href={project.live}>{ui.live[locale]} ↗</a> : null}
+                  {project.repo ? <a href={project.repo}>{ui.repo[locale]} ↗</a> : null}
+                </p>
               </div>
             </div>
           </article>

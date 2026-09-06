@@ -5,7 +5,6 @@ export type Project = {
   title: string;
   year: string;
   summary: L;
-  role: L;
   stack: string[];
   live?: string;
   repo?: string;
@@ -24,7 +23,6 @@ export const projects: Project[] = [
       ko: "유튜브 영상을 책처럼 읽는 서비스. 주소를 받아 전사하고 문단으로 나눠 임베딩한 뒤, 질문과 뜻이 가까운 문단을 찾아 답한다.",
       en: "Reads a YouTube video like a book. It transcribes a URL, splits the text into passages, embeds them, and answers questions from the passages closest in meaning.",
     },
-    role: { ko: "기획 · 구현 · 배포", en: "Product · build · deploy" },
     stack: ["React", "FastAPI", "Supadata", "KURE-v1", "pgvector", "Claude Haiku", "Vercel"],
     live: "https://digestube.vercel.app",
     shot: "transcript",
@@ -113,7 +111,6 @@ export const projects: Project[] = [
       ko: "정체성 기반 스타일 진단 AI 서비스. 설문 응답을 Claude API로 분석해 남성 사용자에게 스타일 방향과 브랜드를 제안한다.",
       en: "An identity-based style diagnosis service. It analyses survey answers with the Claude API and proposes a direction and brands for men.",
     },
-    role: { ko: "기획 · 개발 · 배포 · 운영", en: "Product · build · deploy · operate" },
     stack: ["React", "Claude API", "Supabase", "Google OAuth", "Vercel"],
     live: "https://vizuden.com",
     shot: "grid",

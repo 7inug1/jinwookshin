@@ -67,7 +67,6 @@ export default async function ProjectPage({ params }: Props) {
         heading={ui.meta[locale]}
         rows={[
           { label: ui.year[locale], value: project.year, mono: true },
-          { label: ui.role[locale], value: project.role[locale] },
           { label: ui.stack[locale], value: project.stack.join(" · "), mono: true },
           ...(project.live
             ? [
