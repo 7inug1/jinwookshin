@@ -30,8 +30,8 @@ export const site = {
     en: "For three and a half years at {company} I owned the frontend of a financial data service. Beyond maintenance, I spent eighteen months building epic AI — an AI investment assistant — with the team and shipping it. Before that I switched out of a humanities track — programming in Vancouver, then frontend depth at the Vanilla Coding bootcamp.",
   } satisfies L,
   builds: {
-    ko: "2026년 2월에 퇴사하고 제품을 0에서 1로 두 번 만들었습니다. VIZUDEN은 기획과 개발, 배포를 혼자 하고 도메인을 사서 지금도 운영하고 있습니다. Digestube는 유튜브 영상을 전사해 문단 단위로 검색하고 답하는 RAG 서비스이고, 근거가 약하면 답하지 않도록 선을 그었습니다. 화면을 만들던 사람이라 모델이 낸 결과가 사용자에게 어떻게 닿는지까지 함께 봅니다.",
-    en: "I left in February 2026 and have taken a product from zero to one twice since. VIZUDEN I designed, built, and shipped alone, then bought a domain and have been running it. Digestube transcribes YouTube videos, retrieves by passage, and answers from what it finds — with a line drawn so it declines when the grounds are weak. Coming from the frontend, I also care about how the model's output reaches the person reading it.",
+    ko: "2026년 2월에 퇴사하고 AI 개발을 파고 있습니다. RAG와 임베딩 검색, 청킹, 리랭킹, 평가를 배우면서 곧바로 제품으로 옮겼고, 그렇게 0에서 1로 두 번 만들었습니다. VIZUDEN은 도메인을 사서 지금도 운영하고 있고, Digestube는 유튜브 영상을 전사해 문단 단위로 검색하고 답하는 RAG 서비스입니다. 근거가 약하면 답하지 않도록 선을 그었습니다. 화면을 만들던 사람이라 모델이 낸 결과가 사용자에게 어떻게 닿는지까지 함께 봅니다.",
+    en: "I left in February 2026 and have been digging into AI engineering since. Retrieval, embeddings, chunking, reranking, evaluation — I learned each one and moved it straight into a product, taking two from zero to one. VIZUDEN runs on a domain I bought and still operate; Digestube transcribes YouTube videos, retrieves by passage, and answers from what it finds. I drew a line so it declines when the grounds are weak. Coming from the frontend, I also care about how the model's output reaches the person reading it.",
   } satisfies L,
   availability: {
     ko: "AI 애플리케이션 엔지니어와 AI 프로덕트 엔지니어 자리를 찾고 있습니다. 국내 스타트업을 우선으로 보고 있고, 영어로 일하는 팀도 좋습니다.",
