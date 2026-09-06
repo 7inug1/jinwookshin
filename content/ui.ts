@@ -12,8 +12,6 @@ export const ui = {
   links: { ko: "링크", en: "Links" },
   live: { ko: "라이브", en: "Live" },
   repo: { ko: "저장소", en: "Repo" },
-  skillsCore: { ko: "익숙한 것", en: "Comfortable with" },
-  skillsLearning: { ko: "익히는 중", en: "Learning" },
   offDuty: { ko: "휴식 및 취미", en: "Off duty" },
   decisionsHeading: { ko: "결정과 측정", en: "Decisions and measurements" },
   notFound: { ko: "여기에는 아무것도 없다.", en: "Nothing lives here." },

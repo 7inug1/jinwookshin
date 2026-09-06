@@ -27,14 +27,6 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
       <dl className="rule-list mt-gap-5 text-small">
         <div className="grid grid-cols-[6.5rem_1fr] gap-gap-3 py-gap-2">
-          <dt className="label pt-[0.25em]">{ui.skillsCore[locale]}</dt>
-          <dd className="font-mono text-ink-2">{site.skillsCore.join(" · ")}</dd>
-        </div>
-        <div className="grid grid-cols-[6.5rem_1fr] gap-gap-3 py-gap-2">
-          <dt className="label pt-[0.25em]">{ui.skillsLearning[locale]}</dt>
-          <dd className="font-mono text-ink-2">{site.skillsLearning.join(" · ")}</dd>
-        </div>
-        <div className="grid grid-cols-[6.5rem_1fr] gap-gap-3 py-gap-2">
           <dt className="label pt-[0.25em]">{ui.offDuty[locale]}</dt>
           <dd className="text-ink-2">{site.offDuty[locale]}</dd>
         </div>
