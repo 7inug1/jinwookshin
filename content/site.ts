@@ -4,8 +4,9 @@ export const site = {
   name: "Jinwook Shin",
   nameLocal: { ko: "신진욱", en: "Jinwook Shin" } satisfies L,
   url: "https://jinwookshin.vercel.app",
-  email: "7inug1@gmail.com",
+  email: "0201jinwook@gmail.com",
   github: "https://github.com/7inug1",
+  linkedin: "https://www.linkedin.com/in/jinwook-shin-125599196",
 
   /**
    * public/ 아래 경로. 비어 있으면 자리표시자 도형을 그린다.
@@ -37,5 +38,4 @@ export const site = {
 export const nav = [
   { href: "/projects", key: "projects" },
   { href: "/blog", key: "blog" },
-  { href: "/about", key: "about" },
 ] as const;

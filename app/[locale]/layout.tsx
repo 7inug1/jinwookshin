@@ -66,7 +66,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     url: site.url,
     email: site.email,
     jobTitle: "AI Application Engineer",
-    sameAs: [site.github],
+    sameAs: [site.github, site.linkedin],
   };
 
   return (
@@ -83,7 +83,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <main id="main" className="wrap grow py-gap-5">
           {children}
         </main>
-        <SiteFooter />
+        <SiteFooter locale={current} />
       </body>
     </html>
   );
