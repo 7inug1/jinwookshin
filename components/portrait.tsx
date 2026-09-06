@@ -16,7 +16,7 @@ export function Portrait({ locale }: { locale: Locale }) {
           style={{ filter: "brightness(1.06) contrast(1.08) saturate(0.92)" }}
           className="h-auto w-full rounded-[6px] border border-rule"
         />
-        <figcaption className="label mt-gap-1">{site.photoCaption[locale]}</figcaption>
+        <figcaption className="label mt-gap-1 text-right">{site.photoCaption[locale]}</figcaption>
       </figure>
     );
   }
