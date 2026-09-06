@@ -30,12 +30,12 @@ export const site = {
     en: "For three and a half years at {company} I owned the frontend of a financial data service. Beyond maintenance, I spent eighteen months building epic AI — an AI investment assistant — with the team and shipping it. Before that I switched out of a humanities track — programming in Vancouver, then frontend depth at the Vanilla Coding bootcamp.",
   } satisfies L,
   builds: {
-    ko: "2026년 2월에 퇴사하고 AI 개발을 파고 있습니다. RAG와 임베딩 검색, 청킹, 리랭킹, 평가를 배우면서 곧바로 제품으로 옮겼고, 그렇게 0에서 1로 두 번 만들었습니다. VIZUDEN은 도메인을 사서 지금도 운영하고 있고, Digestube는 유튜브 영상을 전사해 문단 단위로 검색하고 답하는 RAG 서비스입니다. 근거가 약하면 답하지 않도록 선을 그었습니다. 화면을 만들던 사람이라 모델이 낸 결과가 사용자에게 어떻게 닿는지까지 함께 봅니다.",
-    en: "I left in February 2026 and have been digging into AI engineering since. Retrieval, embeddings, chunking, reranking, evaluation — I learned each one and moved it straight into a product, taking two from zero to one. VIZUDEN runs on a domain I bought and still operate; Digestube transcribes YouTube videos, retrieves by passage, and answers from what it finds. I drew a line so it declines when the grounds are weak. Coming from the frontend, I also care about how the model's output reaches the person reading it.",
+    ko: "2026년 2월 퇴사 후 AI 개발을 배워나가고 있습니다. RAG, 임베딩, 청킹, 리랭킹, 평가를 배우고 개인 프로젝트를 만들어보고 있습니다. 제작해보며 제작자의 문해력과 판단 기준이 중요한 부분이라 느껴, 이 부분에 힘쏟고자 합니다.",
+    en: "Since leaving in February 2026 I have been learning AI engineering. Retrieval, embeddings, chunking, reranking, evaluation — learning them and building personal projects. Building them, I came to feel that the maker's literacy and standards of judgment are what matter, and that is where I want to put my weight.",
   } satisfies L,
   availability: {
-    ko: "AI 애플리케이션 엔지니어와 AI 프로덕트 엔지니어 자리를 찾고 있습니다. 국내 스타트업을 우선으로 보고 있고, 영어로 일하는 팀도 좋습니다.",
-    en: "Open to AI application and AI product engineering roles. Startups first, and teams that work in English are welcome.",
+    ko: "현재 AI 애플리케이션 엔지니어 및 AI 프로덕트 엔지니어쪽으로 관심을 가지며 다시 한 번 산업에 기여할 수 있는 기회를 찾고자 합니다.",
+    en: "I am drawn to AI application and AI product engineering, looking for a chance to contribute to the industry again.",
   } satisfies L,
 };
 
