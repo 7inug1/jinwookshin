@@ -33,12 +33,12 @@ export function SiteFooter() {
       <div className="wrap flex flex-col items-center gap-gap-2 py-gap-4">
         <ul className="flex items-center gap-gap-3">
           <li>
-            <a href={site.github} aria-label="GitHub" className="link-ui block text-ink-2 hover:no-underline">
+            <a href={site.github} aria-label="GitHub" className="link-ui block text-ink-2">
               <GitHubMark />
             </a>
           </li>
           <li>
-            <a href={`mailto:${site.email}`} aria-label="이메일" className="link-ui block text-ink-2 hover:no-underline">
+            <a href={`mailto:${site.email}`} aria-label="이메일" className="link-ui block text-ink-2">
               <MailMark />
             </a>
           </li>

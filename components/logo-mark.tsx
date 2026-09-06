@@ -14,12 +14,12 @@ export function LogoMark() {
         width="30.5"
         height="30.5"
         strokeWidth="1.5"
-        className="fill-ink-max stroke-ink-max transition-colors group-hover/logo:fill-paper"
+        className="fill-ink-max stroke-ink-max"
       />
       <g
         fill="none"
         strokeWidth="3.4"
-        className="stroke-paper transition-colors group-hover/logo:stroke-ink-max"
+        className="stroke-paper"
       >
         <path d="M13.6 7v11.6a3.6 3.6 0 0 1-7 .7" strokeLinecap="butt" />
         <path

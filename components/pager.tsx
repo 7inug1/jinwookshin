@@ -22,9 +22,9 @@ export function Pager({
     <nav aria-label={label} className="mt-gap-6 grid gap-gap-3 border-t border-rule pt-gap-3 sm:grid-cols-2">
       <div>
         {prev ? (
-          <Link href={prev.href} rel="prev" className="group/pager block no-underline">
+          <Link href={prev.href} rel="prev" className="block no-underline">
             <span className="label">← {prevLabel}</span>
-            <span className="mt-gap-1 block text-small underline underline-offset-2 transition-colors group-hover/pager:text-ink-max group-hover/pager:decoration-2">
+            <span className="mt-gap-1 block text-small underline underline-offset-2">
               {prev.title}
             </span>
           </Link>
@@ -32,9 +32,9 @@ export function Pager({
       </div>
       <div className="sm:text-right">
         {next ? (
-          <Link href={next.href} rel="next" className="group/pager block no-underline">
+          <Link href={next.href} rel="next" className="block no-underline">
             <span className="label">{nextLabel} →</span>
-            <span className="mt-gap-1 block text-small underline underline-offset-2 transition-colors group-hover/pager:text-ink-max group-hover/pager:decoration-2">
+            <span className="mt-gap-1 block text-small underline underline-offset-2">
               {next.title}
             </span>
           </Link>

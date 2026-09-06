@@ -25,12 +25,12 @@ export default async function ProjectsPage({ params }: Props) {
             <li key={project.slug} className="py-gap-1">
               <a
                 href={`#${project.slug}`}
-                className="group/toc grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-gap-2 no-underline"
+                className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-gap-2 no-underline"
               >
                 <span className="font-mono text-small text-ink-2 select-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="underline underline-offset-2 transition-colors group-hover/toc:text-ink-max group-hover/toc:decoration-2">
+                <span className="underline underline-offset-2">
                   {project.title}
                 </span>
                 <span className="label">{project.year}</span>
@@ -55,7 +55,7 @@ export default async function ProjectsPage({ params }: Props) {
                 {/* ::after로 카드 전체를 덮어 어디를 눌러도 상세로 간다 */}
                 <Link
                   href={`/${locale}/projects/${project.slug}`}
-                  className="text-ink-max no-underline after:absolute after:inset-0 after:content-[''] group-hover:underline group-hover:underline-offset-4"
+                  className="text-ink-max no-underline after:absolute after:inset-0 after:content-['']"
                 >
                   {project.title}
                 </Link>

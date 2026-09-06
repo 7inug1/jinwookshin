@@ -11,7 +11,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
       <div className="wrap flex flex-wrap items-center justify-between gap-gap-2 py-gap-3">
         <Link
           href={`/${locale}`}
-          className="group/logo flex items-center gap-gap-1 no-underline"
+          className="flex items-center gap-gap-1 no-underline"
         >
           <LogoMark />
           <span className="text-title font-semibold tracking-[-0.02em] text-ink-max">

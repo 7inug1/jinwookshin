@@ -25,7 +25,7 @@ export default async function BlogPage({ params }: Props) {
           >
             <Link href={`/${locale}/blog/${post.slug}`} className="no-underline">
               <div className="flex items-baseline justify-between gap-gap-3">
-                <h2 className="text-title text-ink-max group-hover:underline group-hover:underline-offset-4">
+                <h2 className="text-title text-ink-max">
                   {post.title[locale]}
                 </h2>
                 <time dateTime={post.date} className="label shrink-0">
