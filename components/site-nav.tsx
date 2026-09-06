@@ -11,7 +11,7 @@ export function SiteNav({ locale }: { locale: Locale }) {
 
   return (
     <nav aria-label={ui.nav[locale]}>
-      <ul className="flex items-center gap-gap-3">
+      <ul className="flex items-center gap-gap-2 sm:gap-gap-3">
         {nav.map((item) => {
           const href = `/${locale}${item.href}`;
           const active = pathname === href || pathname.startsWith(`${href}/`);
@@ -22,8 +22,8 @@ export function SiteNav({ locale }: { locale: Locale }) {
                 aria-current={active ? "page" : undefined}
                 className={
                   active
-                    ? "text-small font-medium text-ink-max"
-                    : "link-ui text-small font-medium text-ink"
+                    ? "link-ui text-[0.8125rem] font-medium text-ink-max sm:text-small"
+                    : "link-ui text-[0.8125rem] font-medium text-ink sm:text-small"
                 }
               >
                 {ui[item.key][locale]}

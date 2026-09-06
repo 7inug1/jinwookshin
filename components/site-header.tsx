@@ -8,20 +8,20 @@ import type { Locale } from "@/content/i18n";
 export function SiteHeader({ locale }: { locale: Locale }) {
   return (
     <header className="border-b border-ink">
-      <div className="wrap flex flex-wrap items-center justify-between gap-gap-2 py-gap-3">
+      <div className="wrap flex items-center justify-between gap-gap-2 py-gap-3">
         <Link
           href={`/${locale}`}
-          className="flex items-center gap-gap-1 no-underline"
+          className="flex min-w-0 shrink items-center gap-gap-1 no-underline"
         >
           <LogoMark />
-          <span className="text-title font-semibold tracking-[-0.02em] text-ink-max">
+          <span className="truncate text-[1.05rem] font-semibold tracking-[-0.02em] text-ink-max sm:text-title">
             {site.name}
           </span>
         </Link>
 
-        <div className="flex items-center gap-gap-3">
+        <div className="flex shrink-0 items-center gap-gap-2 sm:gap-gap-3">
           <SiteNav locale={locale} />
-          <span aria-hidden="true" className="h-4 w-px bg-rule" />
+          <span aria-hidden="true" className="hidden h-4 w-px bg-rule sm:block" />
           <LocaleSwitch locale={locale} />
         </div>
       </div>

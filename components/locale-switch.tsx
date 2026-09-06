@@ -32,7 +32,7 @@ export function LocaleSwitch({ locale }: { locale: Locale }) {
       href={`/${other}${rest}`}
       hrefLang={other}
       aria-label={ui.switchLabel[locale]}
-      className="link-ui flex items-center gap-1 border border-rule px-2 py-1 text-ink-2"
+      className="link-ui flex shrink-0 items-center gap-1 border border-rule px-1.5 py-0.5 text-ink-2 sm:px-2 sm:py-1"
     >
       <GlobeMark />
       <span className="font-mono text-label leading-none tracking-[0.08em]">
