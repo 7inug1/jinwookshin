@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Sidenote } from "@/components/sidenote";
@@ -51,11 +52,12 @@ export default async function ProjectPage({ params }: Props) {
 
       <div className="mt-gap-4 w-[min(100%,65ch)]">
         {project.image ? (
-          <img
+          <Image
             src={project.image.src}
             alt={project.image.alt[locale]}
             width={640}
             height={400}
+            sizes={"(min-width: 56rem) 700px, 100vw"}
             className="h-auto w-full border border-rule"
           />
         ) : (

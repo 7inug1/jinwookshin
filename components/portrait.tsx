@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { site } from "@/content/site";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/content/i18n";
@@ -7,11 +8,14 @@ export function Portrait({ locale }: { locale: Locale }) {
   if (site.photo) {
     return (
       <figure className="m-0">
-        <img
+        <Image
           src={site.photo}
           alt={site.photoAlt[locale]}
           width={1100}
           height={825}
+          /* 홈에서 가장 큰 요소라 다른 자원보다 먼저 받는다 */
+          priority
+          sizes="(min-width: 56rem) 700px, 100vw"
           /* 역광이라 인물이 배경보다 어둡다. 밝기와 대비를 올리고 채도는 낮춘다 */
           style={{ filter: "brightness(1.06) contrast(1.08) saturate(0.92)" }}
           className="h-auto w-full rounded-[6px] border border-rule"

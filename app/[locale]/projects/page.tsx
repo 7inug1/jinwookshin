@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { DemoShot } from "@/components/demo-shot";
 import { projects } from "@/content/projects";
@@ -65,11 +66,12 @@ export default async function ProjectsPage({ params }: Props) {
 
             <div className="mt-gap-3 grid gap-gap-4 lg:grid-cols-[20rem_1fr]">
               {project.image ? (
-                <img
+                <Image
                   src={project.image.src}
                   alt={project.image.alt[locale]}
                   width={640}
                   height={400}
+                  sizes={"(min-width: 64rem) 288px, 100vw"}
                   className="h-auto w-full border border-rule transition-colors duration-[var(--dur)] ease-[var(--ease)] group-hover:border-ink"
                 />
               ) : (
