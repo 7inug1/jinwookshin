@@ -25,8 +25,8 @@ export function ProjectShot({
   }
 
   const border = hover
-    ? "border border-rule transition-colors duration-[var(--dur)] ease-[var(--ease)] group-hover:border-ink"
-    : "border border-rule";
+    ? "frame transition-colors duration-[var(--dur)] ease-[var(--ease)] group-hover:border-ink"
+    : "frame";
 
   return (
     <Image

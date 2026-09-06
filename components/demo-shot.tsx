@@ -10,7 +10,6 @@ const line = (x: number, y: number, w: number) => (
 function Transcript() {
   return (
     <>
-      <rect x="0.5" y="0.5" width="319" height="199" fill="none" stroke="currentColor" opacity="0.3" />
       <rect x="0" y="0" width="320" height="18" opacity="0.08" />
       {line(10, 7, 46)}
       <line x1="104" y1="18" x2="104" y2="200" stroke="currentColor" opacity="0.3" />
@@ -41,7 +40,6 @@ function Transcript() {
 function Grid() {
   return (
     <>
-      <rect x="0.5" y="0.5" width="319" height="199" fill="none" stroke="currentColor" opacity="0.3" />
       <rect x="0" y="0" width="320" height="26" opacity="0.08" />
       {line(14, 11, 58)}
       {[220, 250, 280].map((x) => line(x, 12, 22))}
@@ -84,7 +82,7 @@ export function DemoShot({
     <figure className="m-0">
       <svg
         viewBox="0 0 320 200"
-        className="block h-auto w-full text-ink"
+        className="frame block h-auto w-full text-ink"
         fill="currentColor"
         role="img"
         aria-label={`${label} — ${ui.demoCaption[locale]}`}
