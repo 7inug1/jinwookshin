@@ -6,13 +6,13 @@ import type { Locale } from "@/content/i18n";
 export function Portrait({ locale }: { locale: Locale }) {
   if (site.photo) {
     return (
-      <figure className="m-0 flex flex-col sm:h-full">
+      <figure className="m-0">
         <img
           src={site.photo}
           alt={site.photoIsPlaceholder ? ui.photoCaption[locale] : `${site.name}`}
           width={320}
           height={400}
-          className="aspect-[4/5] w-full border border-rule object-cover grayscale sm:aspect-auto sm:min-h-0 sm:grow"
+          className="aspect-square w-full border border-rule object-cover grayscale"
         />
         {site.photoIsPlaceholder ? (
           <figcaption className="label mt-gap-1">{ui.photoCaption[locale]}</figcaption>

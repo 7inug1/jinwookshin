@@ -12,7 +12,6 @@ export const ui = {
   links: { ko: "링크", en: "Links" },
   live: { ko: "라이브", en: "Live" },
   repo: { ko: "저장소", en: "Repo" },
-  now: { ko: "지금", en: "Now" },
   skills: { ko: "다루는 것", en: "Working with" },
   offDuty: { ko: "쉴 때", en: "Off duty" },
   see: { ko: "보기", en: "See" },

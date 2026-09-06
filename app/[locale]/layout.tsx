@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     metadataBase: new URL(site.url),
     title: { default: title, template: `%s — ${site.name}` },
-    description: site.lead[locale],
+    description: site.intro[locale],
     alternates: {
       canonical: `/${locale}`,
       languages: { ko: "/ko", en: "/en" },
@@ -48,9 +48,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${site.url}/${locale}`,
       siteName: site.name,
       title,
-      description: site.lead[locale],
+      description: site.intro[locale],
     },
-    twitter: { card: "summary_large_image", title, description: site.lead[locale] },
+    twitter: { card: "summary_large_image", title, description: site.intro[locale] },
   };
 }
 
