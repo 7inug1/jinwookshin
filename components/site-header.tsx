@@ -14,7 +14,8 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           className="flex min-w-0 shrink items-center gap-gap-1 no-underline"
         >
           <LogoMark />
-          <span className="truncate text-[1.05rem] font-semibold tracking-[-0.02em] text-ink-max sm:text-title">
+          {/* 380px 미만에서는 마크만 남긴다. JS 모노그램이 정체를 대신한다 */}
+          <span className="truncate text-[1.05rem] font-semibold tracking-[-0.02em] text-ink-max max-[379px]:hidden sm:text-title">
             {site.name}
           </span>
         </Link>
