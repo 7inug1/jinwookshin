@@ -26,6 +26,13 @@ export const projects: Project[] = [
     stack: ["React", "FastAPI", "Supadata", "KURE-v1", "pgvector", "Claude Haiku", "Vercel"],
     live: "https://digestube.vercel.app",
     shot: "transcript",
+    image: {
+      src: "/shot-digestube.jpg",
+      alt: {
+        ko: "Digestube 화면. 왼쪽에 목차, 오른쪽에 타임스탬프가 붙은 전사문이 이어진다",
+        en: "Digestube. A table of contents on the left, timestamped transcript on the right",
+      },
+    },
     decisions: [
       {
         label: {
@@ -114,6 +121,13 @@ export const projects: Project[] = [
     stack: ["React", "Claude API", "Supabase", "Google OAuth", "Vercel"],
     live: "https://vizuden.com",
     shot: "grid",
+    image: {
+      src: "/shot-vizuden.jpg",
+      alt: {
+        ko: "VIZUDEN 보고서 화면. 인물 사진과 스타일 진단 문단이 이어진다",
+        en: "A VIZUDEN report. Portraits followed by the style diagnosis",
+      },
+    },
     decisions: [
       {
         label: {

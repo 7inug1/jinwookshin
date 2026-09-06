@@ -55,10 +55,10 @@ export default async function ProjectPage({ params }: Props) {
           <Image
             src={project.image.src}
             alt={project.image.alt[locale]}
-            width={640}
-            height={400}
+            width={900}
+            height={563}
             sizes={"(min-width: 44rem) 704px, 100vw"}
-            className="h-auto w-full border border-rule"
+            className="aspect-[16/10] w-full object-cover object-top border border-rule"
           />
         ) : (
           <DemoShot kind={project.shot} label={project.title} locale={locale} />
