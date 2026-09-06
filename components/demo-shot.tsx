@@ -84,7 +84,7 @@ export function DemoShot({
     <figure className="m-0">
       <svg
         viewBox="0 0 320 200"
-        className="block h-auto w-full text-ink transition-opacity group-hover:opacity-100 opacity-80"
+        className="block h-auto w-full text-ink"
         fill="currentColor"
         role="img"
         aria-label={`${label} — ${ui.demoCaption[locale]}`}
