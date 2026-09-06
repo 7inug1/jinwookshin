@@ -32,10 +32,6 @@ export const site = {
     ko: "AI 애플리케이션 엔지니어와 AI 프로덕트 엔지니어 자리를 찾고 있습니다. 국내 스타트업을 우선으로 보고 있고, 영어로 일하는 팀도 좋습니다.",
     en: "Open to AI application and AI product engineering roles. Startups first, and teams that work in English are welcome.",
   } satisfies L,
-  offDuty: {
-    ko: "달리기 · 오래된 개인 웹사이트 구경 · 영어 팟캐스트",
-    en: "Running · reading old personal websites · podcasts",
-  } satisfies L,
 };
 
 export const nav = [
