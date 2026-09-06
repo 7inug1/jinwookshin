@@ -19,63 +19,88 @@ export const projects: Project[] = [
   {
     slug: "digestube",
     title: "Digestube",
-    year: "2026",
+    year: "2026.08",
     summary: {
-      ko: "긴 영상을 문단으로 쪼개고 근거를 찾아 답하는 RAG 서비스. 수집·전사·검색·화면·배포를 혼자 진행했다.",
-      en: "A RAG service that splits long videos into passages and answers with citations. I did ingestion, transcription, retrieval, UI, and deploy alone.",
+      ko: "유튜브 영상을 책처럼 읽는 서비스. 주소를 받아 전사하고 문단으로 나눠 임베딩한 뒤, 질문과 뜻이 가까운 문단을 찾아 답한다.",
+      en: "Reads a YouTube video like a book. It transcribes a URL, splits the text into passages, embeds them, and answers questions from the passages closest in meaning.",
     },
     role: { ko: "기획 · 구현 · 배포", en: "Product · build · deploy" },
-    stack: ["Next.js", "TypeScript", "Whisper", "pgvector"],
-    live: "https://example.com",
-    repo: "https://github.com/7inug1",
+    stack: ["React", "FastAPI", "Supadata", "KURE-v1", "pgvector", "Claude Haiku", "Vercel"],
+    live: "https://digestube.vercel.app",
     shot: "transcript",
     decisions: [
       {
         question: {
-          ko: "유사도가 얼마나 가까워야 답하게 했나",
-          en: "How close does similarity have to be before it answers",
+          ko: "전사 — 로컬에서 돌던 파이프라인을 왜 버렸나",
+          en: "Transcription — why the local pipeline was dropped",
         },
         answer: {
-          ko: "임계값을 어디에 뒀고 그 값을 무엇과 비교해 골랐는지 적는다. 숫자와 판단이 같이 있어야 한다.",
-          en: "Where the threshold sits, and what it was compared against. The number and the judgment belong together.",
+          ko: "yt-dlp와 mlx-whisper 조합이 로컬에서는 잘 돌았지만, 서버에서는 데이터센터 IP 대역이라는 이유로 차단됐다. 배포된 서비스에서도 운영할 수 있는 외부 전사 API(Supadata)로 전환했다.",
+          en: "yt-dlp with mlx-whisper worked fine locally, but on the server it was blocked for coming from a data-centre IP range. I moved to an external transcription API (Supadata) that keeps working in production.",
         },
       },
       {
         question: {
-          ko: "근거를 못 찾으면 어떻게 동작하나",
-          en: "What happens when it finds no grounds",
+          ko: "청킹 — 분할 방식 네 가지를 무엇으로 비교했나",
+          en: "Chunking — how four splitting methods were compared",
         },
         answer: {
-          ko: "답하지 않는 쪽을 택한 이유와, 그때 사용자에게 무엇을 보여주는지를 적는다.",
-          en: "Why it declines to answer, and what the reader sees instead.",
+          ko: "문단이 검색의 단위이므로 가독성(문장 끊김)과 문단 크기를 기준으로 네 가지를 비교했고, 문장 끝과 길이를 함께 보는 recursive splitting을 적용했다.",
+          en: "The passage is the unit of retrieval, so I compared four methods on readability (whether sentences get cut) and passage size, and applied recursive splitting on sentence boundaries plus length.",
         },
       },
       {
         question: {
-          ko: "검토했지만 도입하지 않은 것",
-          en: "What I considered and did not ship",
+          ko: "임베딩 — 모델이 중단됐을 때 무엇으로 바꿨나",
+          en: "Embeddings — what replaced the model when it was discontinued",
         },
         answer: {
-          ko: "쓰지 않기로 한 기술과 그 이유. 쓴 것보다 안 쓴 것이 판단을 더 잘 보여줄 때가 있다.",
-          en: "What I left out and why. Sometimes the omission shows the judgment better than the choice.",
+          ko: "한국어 검색 성능을 기준으로 BGE-M3을 골랐다. 이 모델이 외부 API에서 중단된 뒤 같은 차원(1024)의 KURE-v1으로 교체해 저장된 벡터를 다시 만들지 않고 대응했다.",
+          en: "I picked BGE-M3 for Korean retrieval quality. After it was discontinued on the external API, I swapped in KURE-v1, which has the same 1024 dimensions, so the stored vectors did not have to be rebuilt.",
+        },
+      },
+      {
+        question: {
+          ko: "목차 — LLM이 없는 제목을 만들어내는 문제",
+          en: "Table of contents — stopping the model from inventing headings",
+        },
+        answer: {
+          ko: "제목과 함께 근거 문장을 받아 전사문에 실제로 있는지 대조하고, 확인되지 않으면 저장하지 않도록 구현했다.",
+          en: "The model returns a heading together with the sentence it came from. I check that sentence against the transcript and discard the heading when it is not found.",
+        },
+      },
+      {
+        question: {
+          ko: "저장소 — 벡터 전용 DB를 쓰지 않은 이유",
+          en: "Storage — why not a dedicated vector database",
+        },
+        answer: {
+          ko: "문단 텍스트와 타임스탬프, 벡터를 한 행에 담으면 조회가 한 번에 끝난다. 그래서 Postgres와 pgvector를 골랐고, 서버와 같은 지역(서울)에 둘 수 있는 Supabase로 결정했다.",
+          en: "Keeping passage text, timestamps, and the vector in one row means one query instead of two systems. So Postgres with pgvector, hosted on Supabase where it can sit in the same region (Seoul) as the server.",
+        },
+      },
+      {
+        question: {
+          ko: "물어보기 — 근거가 약하면 어떻게 하나",
+          en: "Answering — what happens when the grounds are weak",
+        },
+        answer: {
+          ko: "같은 방식으로 찾은 문단만 근거로 답변을 만들고, 유사도가 기준 미만이면 답하지 않는다.",
+          en: "Answers are generated only from the passages retrieved, and when similarity falls below the threshold it does not answer at all.",
         },
       },
     ],
     body: [
       {
         text: {
-          ko: "영상 한 편은 문장 수천 개가 되고, 그중 질문과 관련 있는 건 대개 서너 문단이다. 문제는 그 서너 문단을 어떻게 고르느냐가 아니라, 고르지 못했을 때 무엇을 할 것이냐였다.",
-          en: "One video becomes thousands of sentences, and usually only three or four passages matter. The hard part was not picking them. It was deciding what to do when nothing was close enough.",
-        },
-        note: {
-          ko: "사이드노트다. 넓은 화면에서는 여백으로 나가고 좁으면 본문 아래로 내려온다.",
-          en: "A sidenote. It moves into the margin on wide screens and falls below the text on narrow ones.",
+          ko: "유튜브 주소를 받아 외부 전사 API로 전사하고, 문단으로 나눠 임베딩한 후, 질문과 뜻이 가까운 문단을 찾아 답하는 RAG 서비스다. 수집부터 화면과 배포까지 혼자 진행했다.",
+          en: "Give it a YouTube URL and it transcribes through an external API, splits the text into passages, embeds them, and answers by finding the passages closest in meaning to the question. I built the whole path alone, from ingestion to interface to deploy.",
         },
       },
       {
         text: {
-          ko: "화제가 바뀌는 지점에서 문단을 나눴다. 고정 길이로 자르는 방식과 비교했을 때 무엇이 좋아지고 무엇이 나빠지는지를 재보고 골랐다.",
-          en: "I split passages where the topic turns, and measured that against fixed-length chunks before choosing.",
+          ko: "검색은 글자 일치가 아니라 임베딩 유사도로 문단을 찾고 근거 문장과 함께 보여준다. 물어보기는 그렇게 찾은 문단만 근거로 답을 만든다.",
+          en: "Search finds passages by embedding similarity rather than string matching and shows the sentence it rests on. Asking a question generates the answer from those passages and nothing else.",
         },
       },
     ],
@@ -83,30 +108,62 @@ export const projects: Project[] = [
   {
     slug: "vizuden",
     title: "VIZUDEN",
-    year: "2025",
+    year: "2026.03–06",
     summary: {
-      ko: "도메인을 사서 운영 중인 서비스. 오픈그래프 문제를 SSR이 필요하다고 판단해 Next.js로 이관했다.",
-      en: "A service I bought a domain for and still run. Open Graph broke on the client, so I moved it to Next.js for server rendering.",
+      ko: "정체성 기반 스타일 진단 AI 서비스. 설문 응답을 Claude API로 분석해 남성 사용자에게 스타일 방향과 브랜드를 제안한다.",
+      en: "An identity-based style diagnosis service. It analyses survey answers with the Claude API and proposes a direction and brands for men.",
     },
-    role: { ko: "기획 · 구현 · 운영", en: "Product · build · operate" },
-    stack: ["Next.js", "TypeScript", "Vercel"],
-    live: "https://example.com",
-    repo: "https://github.com/7inug1",
+    role: { ko: "기획 · 개발 · 배포 · 운영", en: "Product · build · deploy · operate" },
+    stack: ["React", "Claude API", "Supabase", "Google OAuth", "Vercel"],
+    live: "https://vizuden.com",
     shot: "grid",
     decisions: [
       {
-        question: { ko: "왜 SSR로 이관했나", en: "Why move to server rendering" },
+        question: {
+          ko: "보고서가 통째로 비는 문제",
+          en: "Reports coming back empty",
+        },
         answer: {
-          ko: "클라이언트 렌더링에서 메타 태그가 크롤러에 안 잡히던 상황과, 이관 후 무엇이 달라졌는지를 적는다.",
-          en: "Crawlers never saw the meta tags on the client, and what changed after the move.",
+          ko: "LLM 응답 형식이 일정하지 않아 JSON 파싱이 실패하면 보고서가 통째로 비었다. 파싱에 실패하면 본문에서 JSON 구간만 잘라 다시 읽는 폴백 파서를 구현했다.",
+          en: "The model did not always return the same shape, and a failed JSON parse emptied the whole report. I added a fallback parser that cuts the JSON section out of the response body and reads it again.",
+        },
+      },
+      {
+        question: {
+          ko: "생성이 오래 걸려 빈 화면이 남는 문제",
+          en: "A blank screen while the report is generated",
+        },
+        answer: {
+          ko: "보고서 생성이 오래 걸려 사용자가 빈 화면을 기다렸다. 결과를 스트리밍으로 받아 도착하는 대로 렌더링했다.",
+          en: "Generation took long enough that users sat in front of nothing. I streamed the result and rendered each part as it arrived.",
+        },
+      },
+      {
+        question: {
+          ko: "차트 라이브러리를 넣지 않은 이유",
+          en: "Why no charting library",
+        },
+        answer: {
+          ko: "예산 배분 하나를 보여주려고 라이브러리를 들이지 않고 SVG 도넛 차트를 직접 그렸다. 추천 아이템은 보고서가 만들어지는 도중에 네이버 쇼핑에서 조회해 이미지·가격과 함께 붙였다.",
+          en: "One budget breakdown did not justify a dependency, so I drew the donut chart in SVG. Recommended items are fetched from Naver Shopping while the report is still being generated and attached with image and price.",
+        },
+      },
+      {
+        question: {
+          ko: "로그인을 앞에 두지 않은 이유",
+          en: "Why login does not come first",
+        },
+        answer: {
+          ko: "설문을 바로 시작할 수 있도록 로그인을 요구하지 않았다. 끝난 뒤 로그인하면 게스트 세션에 쌓인 응답·보고서·피드백을 계정으로 옮긴다. 인증은 Supabase 구글 OAuth를 썼고 베타 운영용 어드민 대시보드도 함께 만들었다.",
+          en: "The survey starts without an account. If the user signs in afterwards, the answers, report, and feedback collected in the guest session are moved onto the account. Auth is Supabase with Google OAuth, and there is an admin dashboard for running the beta.",
         },
       },
     ],
     body: [
       {
         text: {
-          ko: "링크를 공유했을 때 미리보기가 비어 있었다. 원인을 찾는 데 걸린 시간과 고치는 데 걸린 시간이 크게 달랐다.",
-          en: "Shared links previewed as blank. Finding the cause took far longer than fixing it.",
+          ko: "설문 응답을 Claude API로 분석해 스타일 방향과 브랜드를 제안하는 AI 보고서 서비스다. 기획과 개발, 배포를 개인으로 진행하고 도메인을 사서 운영했다.",
+          en: "An AI report service that analyses survey answers with the Claude API and proposes a style direction and brands. I designed, built, and shipped it alone, then bought a domain and ran it.",
         },
       },
     ],
