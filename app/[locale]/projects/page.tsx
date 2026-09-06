@@ -43,14 +43,18 @@ export default async function ProjectsPage({ params }: Props) {
           <article
             key={project.slug}
             id={project.slug}
-            className="scroll-mt-gap-3 border-t border-rule py-gap-4"
+            className="group relative scroll-mt-gap-3 border-t border-rule py-gap-4 transition-colors hover:border-ink has-[a:focus-visible]:border-ink"
           >
             <div className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-gap-2">
               <span className="font-mono text-small text-ink-2 select-none">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <h2 className="text-title">
-                <Link href={`/${locale}/projects/${project.slug}`} className="no-underline text-ink-max">
+                {/* ::after로 카드 전체를 덮어 어디를 눌러도 상세로 간다 */}
+                <Link
+                  href={`/${locale}/projects/${project.slug}`}
+                  className="text-ink-max no-underline after:absolute after:inset-0 after:content-[''] group-hover:underline group-hover:underline-offset-4"
+                >
                   {project.title}
                 </Link>
               </h2>
@@ -64,7 +68,7 @@ export default async function ProjectsPage({ params }: Props) {
                   alt={project.image.alt[locale]}
                   width={640}
                   height={400}
-                  className="h-auto w-full border border-rule"
+                  className="h-auto w-full border border-rule transition-colors group-hover:border-ink"
                 />
               ) : (
                 <DemoShot kind={project.shot} label={project.title} locale={locale} />
@@ -94,8 +98,8 @@ export default async function ProjectsPage({ params }: Props) {
                   </dd>
 
                   <dt className="label pt-[0.25em]">{ui.links[locale]}</dt>
-                  <dd className="flex flex-wrap gap-gap-3">
-                    <Link href={`/${locale}/projects/${project.slug}`}>{ui.detail[locale]}</Link>
+                  {/* 덮개 위로 올려 개별 링크가 계속 눌리게 한다 */}
+                  <dd className="relative z-10 flex flex-wrap gap-gap-3">
                     {project.live ? <a href={project.live}>{ui.live[locale]} ↗</a> : null}
                     {project.repo ? <a href={project.repo}>{ui.repo[locale]} ↗</a> : null}
                   </dd>
