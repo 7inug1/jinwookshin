@@ -1,20 +1,24 @@
 type Item = { question: string; answer: string };
 
-/** 빙산 구조. 표층은 짧게, 근거는 펼쳐서 */
+/** 결정과 그 근거. 접지 않고 전부 펼쳐 둔다 */
 export function Decisions({ heading, items }: { heading: string; items: Item[] }) {
   return (
-    <section className="mt-gap-5">
-      <h2 className="label mb-gap-2">{heading}</h2>
-      <div className="rule-list">
-        {items.map((item) => (
-          <details key={item.question} className="group py-gap-2">
-            <summary className="cursor-pointer list-none marker:content-none">
-              <span className="font-mono text-ink-2 mr-2 select-none group-open:hidden">+</span>
-              <span className="font-mono text-ink-2 mr-2 hidden select-none group-open:inline">−</span>
-              {item.question}
-            </summary>
-            <p className="measure mt-gap-2 pl-[1.4rem] text-small text-ink-2">{item.answer}</p>
-          </details>
+    <section className="mt-gap-6">
+      <h2 className="label">{heading}</h2>
+      <div className="mt-gap-2">
+        {items.map((item, i) => (
+          <div
+            key={item.question}
+            className="grid grid-cols-[2.5rem_1fr] gap-gap-2 border-t border-rule py-gap-3"
+          >
+            <span className="font-mono text-small text-ink-2 select-none pt-[0.15em]">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3 className="font-medium text-ink-max">{item.question}</h3>
+              <p className="measure mt-gap-1 text-small text-ink-2">{item.answer}</p>
+            </div>
+          </div>
         ))}
       </div>
     </section>
