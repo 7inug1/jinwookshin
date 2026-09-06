@@ -8,7 +8,7 @@ export function MetaList({ heading, rows }: { heading: string; rows: MetaRow[] }
         {rows.map((row) => (
           <div key={row.label} className="grid grid-cols-[4.5rem_1fr] gap-gap-3 py-gap-2">
             <dt className="label pt-[0.25em]">{row.label}</dt>
-            <dd className={row.mono ? "font-mono text-ink-2" : undefined}>{row.value}</dd>
+            <dd className={`min-w-0 break-words ${row.mono ? "font-mono text-ink-2" : ""}`}>{row.value}</dd>
           </div>
         ))}
       </dl>

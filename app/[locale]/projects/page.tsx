@@ -52,7 +52,7 @@ export default async function ProjectsPage({ params }: Props) {
               <span className="font-mono text-small text-ink-2 select-none">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <h2 className="text-title">
+              <h2 className="min-w-0 text-title">
                 {/* ::after로 카드 전체를 덮어 어디를 눌러도 상세로 간다 */}
                 <Link
                   href={`/${locale}/projects/${project.slug}`}
