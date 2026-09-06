@@ -26,8 +26,8 @@ export const site = {
     en: "I spent about three and a half years on the frontend at a financial data company. With the team I built epic AI, an AI investment assistant, from nothing over eighteen months and shipped it — that is where my interest in AI application development started. After leaving I built VIZUDEN, a style diagnosis service, on my own, and ran it on a domain I bought. Most recently I built Digestube, a service that lets you read a YouTube video.",
   } satisfies L,
   builds: {
-    ko: "프롬프트 한 줄로 서비스가 뚝딱 나오는 시대지만, 만들어보면 정작 어려운 건 기준을 세우고 그대로 구현해 나가는 일이었습니다. Digestube에서는 어떤 근거가 있을 때 사용자의 질문에 답하게 할지를 직접 정해야 했습니다. 개발자의 도메인 지식과 명확한 판단 기준은 AI가 할 수 없는 부분이고, 더욱 힘을 쏟아야 하는 부분이라고 느낍니다.",
-    en: "A single prompt can spin up a service these days, but the hard part turns out to be setting the standards and building to them. With Digestube I had to decide for myself on what grounds it should answer a question at all. A developer's domain knowledge and clear judgment are the parts AI cannot supply — and the parts worth putting more weight on.",
+    ko: "프롬프트 한 줄로 서비스가 뚝딱 나오는 시대지만, 만들어보면 정작 어려운 건 기준을 세우고 그대로 구현해 나가는 일이었습니다. Digestube를 만들 때 사용자의 질문에 어떠한 근거가 있을 때 답하고, 답이 없다고 할지 고민할 때 특히 느꼈습니다. 개발자의 도메인 지식과 명확한 판단 기준은 AI가 할 수 없는 부분이고, 더욱 힘을 쏟아야 하는 부분이라고 느낍니다.",
+    en: "A single prompt can spin up a service these days, but the hard part turns out to be setting the standards and building to them. I felt it most while building Digestube, working out on what grounds it should answer a question and when it should say it does not know. A developer's domain knowledge and clear judgment are the parts AI cannot supply — and the parts worth putting more weight on.",
   } satisfies L,
   availability: {
     ko: "현재 AI 애플리케이션 엔지니어 및 AI 프로덕트 엔지니어쪽으로 관심을 가지며 다시 한 번 산업에 기여할 기회를 찾고 있습니다.",
