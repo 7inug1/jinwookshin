@@ -96,8 +96,8 @@ export default async function ProjectPage({ params }: Props) {
       <Decisions
         heading={ui.decisionsHeading[locale]}
         items={project.decisions.map((d) => ({
-          question: d.question[locale],
-          answer: d.answer[locale],
+          label: d.label[locale],
+          text: d.text[locale],
         }))}
       />
 

@@ -10,7 +10,7 @@ export type Project = {
   repo?: string;
   image?: { src: string; alt: L };
   shot: "transcript" | "grid";
-  decisions: { question: L; answer: L }[];
+  decisions: { label: L; text: L }[];
   body: { text: L; note?: L }[];
 };
 
@@ -28,61 +28,61 @@ export const projects: Project[] = [
     shot: "transcript",
     decisions: [
       {
-        question: {
-          ko: "전사 — 로컬에서 돌던 파이프라인을 왜 버렸나",
-          en: "Transcription — why the local pipeline was dropped",
+        label: {
+          ko: "전사",
+          en: "Transcription",
         },
-        answer: {
+        text: {
           ko: "yt-dlp와 mlx-whisper 조합이 로컬에서는 잘 돌았지만, 서버에서는 데이터센터 IP 대역이라는 이유로 차단됐다. 배포된 서비스에서도 운영할 수 있는 외부 전사 API(Supadata)로 전환했다.",
           en: "yt-dlp with mlx-whisper worked fine locally, but on the server it was blocked for coming from a data-centre IP range. I moved to an external transcription API (Supadata) that keeps working in production.",
         },
       },
       {
-        question: {
-          ko: "청킹 — 분할 방식 네 가지를 무엇으로 비교했나",
-          en: "Chunking — how four splitting methods were compared",
+        label: {
+          ko: "청킹",
+          en: "Chunking",
         },
-        answer: {
+        text: {
           ko: "문단이 검색의 단위이므로 가독성(문장 끊김)과 문단 크기를 기준으로 네 가지를 비교했고, 문장 끝과 길이를 함께 보는 recursive splitting을 적용했다.",
           en: "The passage is the unit of retrieval, so I compared four methods on readability (whether sentences get cut) and passage size, and applied recursive splitting on sentence boundaries plus length.",
         },
       },
       {
-        question: {
-          ko: "임베딩 — 모델이 중단됐을 때 무엇으로 바꿨나",
-          en: "Embeddings — what replaced the model when it was discontinued",
+        label: {
+          ko: "임베딩",
+          en: "Embeddings",
         },
-        answer: {
+        text: {
           ko: "한국어 검색 성능을 기준으로 BGE-M3을 골랐다. 이 모델이 외부 API에서 중단된 뒤 같은 차원(1024)의 KURE-v1으로 교체해 저장된 벡터를 다시 만들지 않고 대응했다.",
           en: "I picked BGE-M3 for Korean retrieval quality. After it was discontinued on the external API, I swapped in KURE-v1, which has the same 1024 dimensions, so the stored vectors did not have to be rebuilt.",
         },
       },
       {
-        question: {
-          ko: "목차 — LLM이 없는 제목을 만들어내는 문제",
-          en: "Table of contents — stopping the model from inventing headings",
+        label: {
+          ko: "목차",
+          en: "Contents",
         },
-        answer: {
+        text: {
           ko: "제목과 함께 근거 문장을 받아 전사문에 실제로 있는지 대조하고, 확인되지 않으면 저장하지 않도록 구현했다.",
           en: "The model returns a heading together with the sentence it came from. I check that sentence against the transcript and discard the heading when it is not found.",
         },
       },
       {
-        question: {
-          ko: "저장소 — 벡터 전용 DB를 쓰지 않은 이유",
-          en: "Storage — why not a dedicated vector database",
+        label: {
+          ko: "저장소",
+          en: "Storage",
         },
-        answer: {
+        text: {
           ko: "문단 텍스트와 타임스탬프, 벡터를 한 행에 담으면 조회가 한 번에 끝난다. 그래서 Postgres와 pgvector를 골랐고, 서버와 같은 지역(서울)에 둘 수 있는 Supabase로 결정했다.",
           en: "Keeping passage text, timestamps, and the vector in one row means one query instead of two systems. So Postgres with pgvector, hosted on Supabase where it can sit in the same region (Seoul) as the server.",
         },
       },
       {
-        question: {
-          ko: "물어보기 — 근거가 약하면 어떻게 하나",
-          en: "Answering — what happens when the grounds are weak",
+        label: {
+          ko: "물어보기",
+          en: "Answering",
         },
-        answer: {
+        text: {
           ko: "같은 방식으로 찾은 문단만 근거로 답변을 만들고, 유사도가 기준 미만이면 답하지 않는다.",
           en: "Answers are generated only from the passages retrieved, and when similarity falls below the threshold it does not answer at all.",
         },
@@ -116,41 +116,41 @@ export const projects: Project[] = [
     shot: "grid",
     decisions: [
       {
-        question: {
-          ko: "보고서가 통째로 비는 문제",
-          en: "Reports coming back empty",
+        label: {
+          ko: "파싱",
+          en: "Parsing",
         },
-        answer: {
+        text: {
           ko: "LLM 응답 형식이 일정하지 않아 JSON 파싱이 실패하면 보고서가 통째로 비었다. 파싱에 실패하면 본문에서 JSON 구간만 잘라 다시 읽는 폴백 파서를 구현했다.",
           en: "The model did not always return the same shape, and a failed JSON parse emptied the whole report. I added a fallback parser that cuts the JSON section out of the response body and reads it again.",
         },
       },
       {
-        question: {
-          ko: "생성이 오래 걸려 빈 화면이 남는 문제",
-          en: "A blank screen while the report is generated",
+        label: {
+          ko: "스트리밍",
+          en: "Streaming",
         },
-        answer: {
+        text: {
           ko: "보고서 생성이 오래 걸려 사용자가 빈 화면을 기다렸다. 결과를 스트리밍으로 받아 도착하는 대로 렌더링했다.",
           en: "Generation took long enough that users sat in front of nothing. I streamed the result and rendered each part as it arrived.",
         },
       },
       {
-        question: {
-          ko: "차트 라이브러리를 넣지 않은 이유",
-          en: "Why no charting library",
+        label: {
+          ko: "차트",
+          en: "Charts",
         },
-        answer: {
+        text: {
           ko: "예산 배분 하나를 보여주려고 라이브러리를 들이지 않고 SVG 도넛 차트를 직접 그렸다. 추천 아이템은 보고서가 만들어지는 도중에 네이버 쇼핑에서 조회해 이미지·가격과 함께 붙였다.",
           en: "One budget breakdown did not justify a dependency, so I drew the donut chart in SVG. Recommended items are fetched from Naver Shopping while the report is still being generated and attached with image and price.",
         },
       },
       {
-        question: {
-          ko: "로그인을 앞에 두지 않은 이유",
-          en: "Why login does not come first",
+        label: {
+          ko: "로그인",
+          en: "Sign-in",
         },
-        answer: {
+        text: {
           ko: "설문을 바로 시작할 수 있도록 로그인을 요구하지 않았다. 끝난 뒤 로그인하면 게스트 세션에 쌓인 응답·보고서·피드백을 계정으로 옮긴다. 인증은 Supabase 구글 OAuth를 썼고 베타 운영용 어드민 대시보드도 함께 만들었다.",
           en: "The survey starts without an account. If the user signs in afterwards, the answers, report, and feedback collected in the guest session are moved onto the account. Auth is Supabase with Google OAuth, and there is an admin dashboard for running the beta.",
         },
