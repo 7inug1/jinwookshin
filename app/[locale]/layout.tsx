@@ -37,11 +37,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     metadataBase: new URL(site.url),
     title: { default: title, template: `%s — ${site.name}` },
     description: site.intro[locale],
+    robots: { index: true, follow: true },
     alternates: {
       canonical: `/${locale}`,
       languages: { ko: "/ko", en: "/en" },
+      types: { "application/rss+xml": `${site.url}/${locale}/feed.xml` },
     },
-    robots: { index: true, follow: true },
     openGraph: {
       type: "website",
       locale: locale === "ko" ? "ko_KR" : "en_US",
