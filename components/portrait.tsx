@@ -13,7 +13,7 @@ export function Portrait({ locale }: { locale: Locale }) {
           width={320}
           height={400}
           style={{ objectPosition: site.photoPosition }}
-          className="aspect-square w-full border border-rule object-cover grayscale"
+          className="aspect-[4/5] w-full border border-rule object-cover"
         />
         {site.photoIsPlaceholder ? (
           <figcaption className="label mt-gap-1">{ui.photoCaption[locale]}</figcaption>

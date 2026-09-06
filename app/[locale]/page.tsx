@@ -9,7 +9,10 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
   return (
     <>
-      <section className="grid gap-gap-4 sm:grid-cols-[1fr_12rem] sm:gap-gap-5">
+      <section className="grid gap-gap-4 sm:grid-cols-[14rem_1fr] sm:gap-gap-5">
+        {/* 이미지는 좁은 화면에서 위, 넓은 화면에서 왼쪽. DOM 순서가 곧 시각 순서다 */}
+        <Portrait locale={locale} />
+
         <div className="min-w-0">
           <h1 className="display measure">{site.greeting[locale]}</h1>
           <div className="prose measure mt-gap-3">
@@ -17,10 +20,6 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
             <p>{site.builds[locale]}</p>
             <p className="italic text-ink-2">{site.availability[locale]}</p>
           </div>
-        </div>
-
-        <div className="sm:pt-gap-4">
-          <Portrait locale={locale} />
         </div>
       </section>
 
