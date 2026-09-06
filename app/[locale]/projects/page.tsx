@@ -91,17 +91,7 @@ export default async function ProjectsPage({ params }: Props) {
                 {/* 스택 길이와 상관없이 링크는 항상 맨 아래 */}
                 <p className="relative z-10 mt-auto flex flex-wrap gap-gap-3 pt-gap-3 text-small">
                   {project.live ? (
-                    project.liveDisabled ? (
-                      <span
-                        aria-disabled="true"
-                        title={ui.livePreparing[locale]}
-                        className="cursor-not-allowed text-ink-2 line-through"
-                      >
-                        {ui.live[locale]}
-                      </span>
-                    ) : (
-                      <ExternalLink href={project.live}>{ui.live[locale]}</ExternalLink>
-                    )
+                    <ExternalLink href={project.live}>{ui.live[locale]}</ExternalLink>
                   ) : null}
                   {project.repo ? (
                     <ExternalLink href={project.repo}>{ui.repo[locale]}</ExternalLink>
