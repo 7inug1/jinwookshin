@@ -15,11 +15,14 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
           <Portrait locale={locale} />
         </div>
 
-        <h1 className="display measure mx-auto mt-gap-4">{site.greeting[locale]}</h1>
-        <div className="prose measure mx-auto mt-gap-3">
-          <p>{site.intro[locale]}</p>
-          <p>{site.builds[locale]}</p>
-          <p className="italic text-ink-2">{site.availability[locale]}</p>
+        {/* 표제와 본문을 한 상자에 담아 왼쪽 시작점을 묶는다 */}
+        <div className="measure mx-auto mt-gap-4">
+          <h1 className="display-sm">{site.greeting[locale]}</h1>
+          <div className="prose mt-gap-3">
+            <p>{site.intro[locale]}</p>
+            <p>{site.builds[locale]}</p>
+            <p className="italic text-ink-2">{site.availability[locale]}</p>
+          </div>
         </div>
       </section>
 

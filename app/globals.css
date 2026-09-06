@@ -116,6 +116,15 @@
     color: var(--color-ink-2);
   }
 
+  /* 홈 인사말처럼 본문 위에 서는 작은 표제 */
+  .display-sm {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
   .display {
     font-family: var(--font-serif);
     font-weight: 400;
