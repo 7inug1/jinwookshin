@@ -11,7 +11,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
     <>
       <section className="text-center">
         {/* 세로 중앙 배치. 사진이 먼저 오고 글이 아래로 이어진다 */}
-        <div className="mx-auto max-w-sm">
+        <div className="mx-auto w-[clamp(14rem,40vw,28rem)]">
           <Portrait locale={locale} />
         </div>
 
