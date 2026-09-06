@@ -12,6 +12,7 @@ export function Portrait({ locale }: { locale: Locale }) {
           alt={site.photoIsPlaceholder ? ui.photoCaption[locale] : `${site.name}`}
           width={320}
           height={400}
+          style={{ objectPosition: site.photoPosition }}
           className="aspect-square w-full border border-rule object-cover grayscale"
         />
         {site.photoIsPlaceholder ? (

@@ -11,8 +11,10 @@ export const site = {
    * public/ 아래 경로. 비어 있으면 자리표시자 도형을 그린다.
    * 지금 값은 Pexels 무료 사진(photos/1181675)이고 실제 프로필 사진으로 바꿔야 한다.
    */
-  photo: "/portrait-placeholder.jpg",
-  photoIsPlaceholder: true,
+  photo: "/portrait.jpg",
+  photoIsPlaceholder: false,
+  /** 인물이 왼쪽에 서 있는 가로 사진이라 정사각 크롭 위치를 옮긴다 */
+  photoPosition: "28% 42%",
 
   greeting: { ko: "안녕하세요, 신진욱입니다.", en: "Hi, I'm Jinwook!" } satisfies L,
   intro: {
