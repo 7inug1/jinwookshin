@@ -1,8 +1,7 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Sidenote } from "@/components/sidenote";
-import { DemoShot } from "@/components/demo-shot";
+import { ProjectShot } from "@/components/project-shot";
 import { Decisions } from "@/components/decisions";
 import { Pager } from "@/components/pager";
 import { Breadcrumb } from "@/components/breadcrumb";
@@ -51,18 +50,11 @@ export default async function ProjectPage({ params }: Props) {
       <p className="measure mt-gap-3 text-ink-2">{project.summary[locale]}</p>
 
       <div className="mt-gap-4">
-        {project.image ? (
-          <Image
-            src={project.image.src}
-            alt={project.image.alt[locale]}
-            width={800}
-            height={1067}
-            sizes={"(min-width: 44rem) 704px, 100vw"}
-            className="aspect-[3/4] w-full object-cover object-top border border-rule"
-          />
-        ) : (
-          <DemoShot kind={project.shot} label={project.title} locale={locale} />
-        )}
+        <ProjectShot
+          project={project}
+          locale={locale}
+          sizes="(min-width: 44rem) 704px, 100vw"
+        />
       </div>
 
       <MetaList

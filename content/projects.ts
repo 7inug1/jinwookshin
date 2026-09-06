@@ -9,6 +9,8 @@ export type Project = {
   live?: string;
   repo?: string;
   image?: { src: string; alt: L };
+  /** 화면 비율. 기본은 16:10, 세로가 긴 화면은 3:4 */
+  imageAspect?: "16/10" | "3/4";
   shot: "transcript" | "grid";
   decisions: { label: L; text: L }[];
   body: { text: L; note?: L }[];
@@ -128,6 +130,7 @@ export const projects: Project[] = [
         en: "A VIZUDEN report. Portraits followed by the style diagnosis",
       },
     },
+    imageAspect: "3/4",
     decisions: [
       {
         label: {

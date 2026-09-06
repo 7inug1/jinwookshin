@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
-import { DemoShot } from "@/components/demo-shot";
+import { ProjectShot } from "@/components/project-shot";
 import { projects } from "@/content/projects";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/content/i18n";
@@ -65,18 +64,12 @@ export default async function ProjectsPage({ params }: Props) {
             </div>
 
             <div className="mt-gap-3 grid gap-gap-4 lg:grid-cols-[16rem_1fr]">
-              {project.image ? (
-                <Image
-                  src={project.image.src}
-                  alt={project.image.alt[locale]}
-                  width={800}
-                  height={1067}
-                  sizes={"(min-width: 64rem) 256px, 100vw"}
-                  className="aspect-[3/4] w-full object-cover object-top border border-rule transition-colors duration-[var(--dur)] ease-[var(--ease)] group-hover:border-ink"
-                />
-              ) : (
-                <DemoShot kind={project.shot} label={project.title} locale={locale} />
-              )}
+              <ProjectShot
+                project={project}
+                locale={locale}
+                sizes="(min-width: 64rem) 256px, 100vw"
+                hover
+              />
               <div className="min-w-0">
                 <p className="measure text-small">{project.summary[locale]}</p>
 
