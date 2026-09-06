@@ -10,8 +10,8 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   return (
     <>
       <section>
-        {/* 사진만 가운데. 글은 왼쪽 정렬이라 줄 시작점이 고정된다 */}
-        <div className="mx-auto w-[clamp(14rem,40vw,28rem)]">
+        {/* 사진 폭을 본문 measure에 맞춘다. 사진과 글의 좌우 끝이 같은 선에 선다 */}
+        <div className="mx-auto w-[min(80vw,65ch)]">
           <Portrait locale={locale} />
         </div>
 
