@@ -21,17 +21,13 @@ export const site = {
   } satisfies L,
 
   greeting: { ko: "안녕하세요, 신진욱입니다.", en: "Hi, I'm Jinwook!" } satisfies L,
-  company: {
-    name: { ko: "한경에이셀", en: "Hankyung Aicel" } satisfies L,
-    url: "https://www.aiceltech.com",
-  },
   intro: {
-    ko: "{company}에서 3년 6개월 동안 금융 데이터 서비스의 프론트엔드를 맡았습니다. 유지 보수를 넘어 AI 투자 비서 epic AI를 팀과 함께 1년 6개월 동안 처음부터 만들어 런칭했습니다. 그전에는 문과에서 진로를 바꿔 캐나다 밴쿠버에서 프로그래밍을 공부했고, 바닐라코딩 부트캠프에서 프론트엔드에 대한 전문성을 키웠습니다.",
-    en: "For three and a half years at {company} I owned the frontend of a financial data service. Beyond maintenance, I spent eighteen months building epic AI — an AI investment assistant — with the team and shipping it. Before that I switched out of a humanities track — programming in Vancouver, then frontend depth at the Vanilla Coding bootcamp.",
+    ko: "프론트엔드를 만들다 AI 제품 쪽으로 넘어왔습니다. 금융 데이터 서비스의 화면과 운영 도구, AI 투자 비서, 영상을 읽는 검색 서비스까지 만들어 왔습니다.",
+    en: "I moved from frontend into AI products. I have built screens and internal tools for a financial data service, an AI investment assistant, and a search service that reads through video.",
   } satisfies L,
   builds: {
-    ko: "2026년 2월 퇴사 후 AI 개발을 배워나가고 있습니다. RAG, 임베딩, 청킹, 리랭킹, 평가를 배우고 개인 프로젝트를 만들어보고 있습니다. 제작해보며 제작자의 문해력과 판단 기준이 중요한 부분이라 느껴, 이 부분에 힘쏟고자 합니다.",
-    en: "Since leaving in February 2026 I have been learning AI engineering. Retrieval, embeddings, chunking, reranking, evaluation — learning them and building personal projects. Building them, I came to feel that the maker's literacy and standards of judgment are what matter, and that is where I want to put my weight.",
+    ko: "요즘은 모델이 낸 답을 사람이 믿고 쓸 수 있게 만드는 일에 붙어 있습니다. 근거를 못 찾았을 때 무엇을 보여줄지, 어디까지 답하게 할지 같은 것들입니다. 기술을 고르는 것보다 그 선을 정하는 쪽이 더 어렵고, 그래서 더 재미있습니다.",
+    en: "Lately I am stuck on making a model's answers something people can actually trust. What to show when retrieval finds nothing, how far the thing should be allowed to answer. Drawing that line is harder than picking the technology, and more interesting for it.",
   } satisfies L,
   availability: {
     ko: "현재 AI 애플리케이션 엔지니어 및 AI 프로덕트 엔지니어쪽으로 관심을 가지며 다시 한 번 산업에 기여할 수 있는 기회를 찾고자 합니다.",
