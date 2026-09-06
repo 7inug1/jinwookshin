@@ -43,7 +43,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <footer className="mt-gap-6 border-t border-rule">
+    <footer className="border-t border-rule">
       <div className="wrap flex flex-col items-center gap-gap-2 py-gap-4">
         <ul className="flex items-center gap-gap-3">
           {links.map((link) => (
