@@ -5,6 +5,9 @@ import type { Locale } from "@/content/i18n";
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
 
+  /* 소개 문단 안의 회사 이름을 링크로 바꾼다 */
+  const [beforeCompany, afterCompany] = site.intro[locale].split("{company}");
+
   return (
     <section>
       <Portrait locale={locale} />
@@ -13,7 +16,11 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
       <div className="mt-gap-4">
         <h1 className="display-sm">{site.greeting[locale]}</h1>
         <div className="prose mt-gap-3">
-          <p>{site.intro[locale]}</p>
+          <p>
+            {beforeCompany}
+            <a href={site.company.url}>{site.company.name[locale]}</a>
+            {afterCompany}
+          </p>
           <p>{site.builds[locale]}</p>
           <p className="italic text-ink-2">{site.availability[locale]}</p>
         </div>
