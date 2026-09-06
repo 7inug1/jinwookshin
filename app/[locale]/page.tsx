@@ -10,13 +10,13 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   return (
     <>
       <section>
-        {/* 사진 폭을 본문 measure에 맞춘다. 사진과 글의 좌우 끝이 같은 선에 선다 */}
-        <div className="mx-auto w-[min(80vw,65ch)]">
+        {/* 사진과 글이 같은 65ch 상자를 쓴다. 왼쪽 끝이 아래 목록과도 맞는다 */}
+        <div className="w-[min(100%,65ch)]">
           <Portrait locale={locale} />
         </div>
 
         {/* 표제와 본문을 한 상자에 담아 왼쪽 시작점을 묶는다 */}
-        <div className="measure mx-auto mt-gap-4">
+        <div className="measure mt-gap-4">
           <h1 className="display-sm">{site.greeting[locale]}</h1>
           <div className="prose mt-gap-3">
             <p>{site.intro[locale]}</p>

@@ -8,7 +8,7 @@ import type { Locale } from "@/content/i18n";
 export function SiteHeader({ locale }: { locale: Locale }) {
   return (
     <header className="border-b border-ink">
-      <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-gap-2 px-gap-3 py-gap-3">
+      <div className="wrap flex flex-wrap items-center justify-between gap-gap-2 py-gap-3">
         <Link
           href={`/${locale}`}
           className="group/logo flex items-center gap-gap-1 no-underline"

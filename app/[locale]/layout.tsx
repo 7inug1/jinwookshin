@@ -80,7 +80,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           {ui.skipToContent[current]}
         </a>
         <SiteHeader locale={current} />
-        <main id="main" className="mx-auto w-full max-w-4xl grow px-gap-3 py-gap-5">
+        <main id="main" className="wrap grow py-gap-5">
           {children}
         </main>
         <SiteFooter />

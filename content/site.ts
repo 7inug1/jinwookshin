@@ -13,6 +13,11 @@ export const site = {
    */
   photo: "/portrait.jpg",
   photoIsPlaceholder: false,
+  photoCaption: { ko: "2025년 런던 여행 중", en: "London, 2025" } satisfies L,
+  photoAlt: {
+    ko: "템스강과 타워브리지를 등지고 선 신진욱",
+    en: "Jinwook Shin standing with the Thames and Tower Bridge behind him",
+  } satisfies L,
 
   greeting: { ko: "안녕하세요, 신진욱입니다.", en: "Hi, I'm Jinwook!" } satisfies L,
   intro: {

@@ -49,7 +49,7 @@ export default async function ProjectPage({ params }: Props) {
       <h1 className="display mt-gap-3">{project.title}</h1>
       <p className="measure mt-gap-3 text-ink-2">{project.summary[locale]}</p>
 
-      <div className="mt-gap-4 max-w-2xl">
+      <div className="mt-gap-4 w-[min(100%,65ch)]">
         {project.image ? (
           <img
             src={project.image.src}

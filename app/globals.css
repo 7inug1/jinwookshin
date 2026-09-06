@@ -27,6 +27,10 @@
 
 @layer theme {
   :root {
+    /* 사이트 전체가 쓰는 단 하나의 가로 규격 */
+    --gutter: clamp(1.25rem, 4vw, 2.5rem);
+    --content: 56rem;
+
     --font-system-sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
       "Pretendard Variable", Pretendard, "Malgun Gothic", "Segoe UI", sans-serif;
   }
@@ -104,6 +108,13 @@
 }
 
 @layer utilities {
+  /* 머리글·본문·바닥글이 모두 이 상자를 쓴다 */
+  .wrap {
+    width: min(100% - 2 * var(--gutter), var(--content));
+    margin-inline: auto;
+  }
+
+  /* 읽기 폭. 가운데로 밀지 않고 상자 왼쪽에서 시작한다 */
   .measure {
     max-width: 65ch;
   }

@@ -9,16 +9,14 @@ export function Portrait({ locale }: { locale: Locale }) {
       <figure className="m-0">
         <img
           src={site.photo}
-          alt={site.photoIsPlaceholder ? ui.photoCaption[locale] : `${site.name}`}
+          alt={site.photoAlt[locale]}
           width={1100}
           height={825}
           /* 역광이라 인물이 배경보다 어둡다. 밝기와 대비를 올리고 채도는 낮춘다 */
           style={{ filter: "brightness(1.06) contrast(1.08) saturate(0.92)" }}
           className="h-auto w-full rounded-[6px] border border-rule"
         />
-        {site.photoIsPlaceholder ? (
-          <figcaption className="label mt-gap-1">{ui.photoCaption[locale]}</figcaption>
-        ) : null}
+        <figcaption className="label mt-gap-1">{site.photoCaption[locale]}</figcaption>
       </figure>
     );
   }
