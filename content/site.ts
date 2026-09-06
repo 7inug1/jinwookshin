@@ -13,8 +13,6 @@ export const site = {
    */
   photo: "/portrait.jpg",
   photoIsPlaceholder: false,
-  /** 인물이 왼쪽에 서 있는 가로 사진이라 세로 크롭 위치를 왼쪽으로 옮긴다 */
-  photoPosition: "12% 50%",
 
   greeting: { ko: "안녕하세요, 신진욱입니다.", en: "Hi, I'm Jinwook!" } satisfies L,
   intro: {

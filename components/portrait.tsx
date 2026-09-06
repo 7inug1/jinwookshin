@@ -10,10 +10,9 @@ export function Portrait({ locale }: { locale: Locale }) {
         <img
           src={site.photo}
           alt={site.photoIsPlaceholder ? ui.photoCaption[locale] : `${site.name}`}
-          width={320}
-          height={400}
-          style={{ objectPosition: site.photoPosition }}
-          className="aspect-[4/5] w-full border border-rule object-cover"
+          width={1100}
+          height={825}
+          className="h-auto w-full border border-rule"
         />
         {site.photoIsPlaceholder ? (
           <figcaption className="label mt-gap-1">{ui.photoCaption[locale]}</figcaption>
