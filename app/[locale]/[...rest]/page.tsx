@@ -10,7 +10,7 @@ const copy = {
     ko: "주소가 바뀌었거나 지운 페이지일 수 있습니다.",
     en: "The address may have changed, or the page may be gone.",
   },
-  home: { ko: "홈으로 이동", en: "Go to home" },
+  home: { ko: "홈으로 이동", en: "Back to homepage" },
 };
 
 /** 어떤 경로에도 맞지 않는 주소. 상태 코드는 미들웨어가 404로 바꾼다 */
