@@ -48,7 +48,13 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         <ul className="flex items-center gap-gap-3">
           {links.map((link) => (
             <li key={link.label}>
-              <a href={link.href} aria-label={link.label} className="link-ui block text-ink-2">
+              <a
+                href={link.href}
+                aria-label={link.label}
+                target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                className="link-ui block text-ink-2"
+              >
                 {link.mark}
               </a>
             </li>

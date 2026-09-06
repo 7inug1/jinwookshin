@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Sidenote } from "@/components/sidenote";
 import { ProjectShot } from "@/components/project-shot";
+import { ExternalLink } from "@/components/external-link";
 import { Decisions } from "@/components/decisions";
 import { Pager } from "@/components/pager";
 import { Breadcrumb } from "@/components/breadcrumb";
@@ -77,9 +78,11 @@ export default async function ProjectPage({ params }: Props) {
                           {ui.live[locale]}
                         </span>
                       ) : (
-                        <a href={project.live}>{ui.live[locale]} ↗</a>
+                        <ExternalLink href={project.live}>{ui.live[locale]}</ExternalLink>
                       )}
-                      {project.repo ? <a href={project.repo}>{ui.repo[locale]} ↗</a> : null}
+                      {project.repo ? (
+                        <ExternalLink href={project.repo}>{ui.repo[locale]}</ExternalLink>
+                      ) : null}
                     </span>
                   ),
                 },

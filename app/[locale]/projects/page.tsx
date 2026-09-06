@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ProjectShot } from "@/components/project-shot";
+import { ExternalLink } from "@/components/external-link";
 import { projects } from "@/content/projects";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/content/i18n";
@@ -98,10 +99,12 @@ export default async function ProjectsPage({ params }: Props) {
                         {ui.live[locale]}
                       </span>
                     ) : (
-                      <a href={project.live}>{ui.live[locale]} ↗</a>
+                      <ExternalLink href={project.live}>{ui.live[locale]}</ExternalLink>
                     )
                   ) : null}
-                  {project.repo ? <a href={project.repo}>{ui.repo[locale]} ↗</a> : null}
+                  {project.repo ? (
+                    <ExternalLink href={project.repo}>{ui.repo[locale]}</ExternalLink>
+                  ) : null}
                 </p>
               </div>
             </div>
