@@ -9,8 +9,8 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
 
   return (
     <>
-      <section className="text-center">
-        {/* 세로 중앙 배치. 사진이 먼저 오고 글이 아래로 이어진다 */}
+      <section>
+        {/* 사진만 가운데. 글은 왼쪽 정렬이라 줄 시작점이 고정된다 */}
         <div className="mx-auto w-[clamp(14rem,40vw,28rem)]">
           <Portrait locale={locale} />
         </div>
