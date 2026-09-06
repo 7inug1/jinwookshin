@@ -74,8 +74,8 @@ export default async function ProjectsPage({ params }: Props) {
               <div className="flex min-w-0 flex-col">
                 <p className="measure text-small">{project.summary[locale]}</p>
 
+                {/* 2열일 때만 세로로 세운다. 한 열로 쌓이면 가로로 흐른다 */}
                 {project.stackLayout === "list" ? (
-                  {/* 2열일 때만 세로로 세운다. 한 열로 쌓이면 가로로 흐른다 */}
                   <ul className="mt-gap-3 font-mono text-small text-ink-2 max-lg:flex max-lg:flex-wrap max-lg:gap-x-3">
                     {project.stack.map((item) => (
                       <li key={item}>{item}</li>
