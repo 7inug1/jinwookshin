@@ -30,7 +30,7 @@ export const projects: Project[] = [
     stack: ["React", "FastAPI", "Supadata", "KURE-v1", "pgvector", "Claude Haiku", "Vercel"],
     shot: "transcript",
     image: {
-      src: "/shot-digestube-2.jpg",
+      src: "/shot-dg-1.jpg",
       alt: {
         ko: "Digestube 화면. 왼쪽에 목차, 오른쪽에 타임스탬프가 붙은 전사문이 이어진다",
         en: "Digestube. A table of contents on the left, timestamped transcript on the right",
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     live: "https://vizuden.com",
     shot: "grid",
     image: {
-      src: "/shot-vizuden-2.jpg",
+      src: "/shot-vz-1.jpg",
       alt: {
         ko: "VIZUDEN 보고서 화면. 인물 사진과 스타일 진단 문단이 이어진다",
         en: "A VIZUDEN report. Portraits followed by the style diagnosis",
