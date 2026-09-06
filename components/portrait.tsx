@@ -12,6 +12,8 @@ export function Portrait({ locale }: { locale: Locale }) {
           alt={site.photoIsPlaceholder ? ui.photoCaption[locale] : `${site.name}`}
           width={1100}
           height={825}
+          /* 역광이라 인물이 배경보다 어둡다. 밝기와 대비를 올리고 채도는 낮춘다 */
+          style={{ filter: "brightness(1.06) contrast(1.08) saturate(0.92)" }}
           className="h-auto w-full rounded-[6px] border border-rule"
         />
         {site.photoIsPlaceholder ? (
