@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SiteNav } from "@/components/site-nav";
+import { LogoMark } from "@/components/logo-mark";
 import { LocaleSwitch } from "@/components/locale-switch";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/i18n";
@@ -8,7 +9,11 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   return (
     <header className="border-b border-ink">
       <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-gap-2 px-gap-3 py-gap-3">
-        <Link href={`/${locale}`} className="no-underline">
+        <Link
+          href={`/${locale}`}
+          className="group/logo flex items-center gap-gap-1 no-underline"
+        >
+          <LogoMark />
           <span className="text-title font-semibold tracking-[-0.02em] text-ink-max">
             {site.name}
           </span>
