@@ -23,7 +23,7 @@ export function SiteNav({ locale }: { locale: Locale }) {
                 className={
                   active
                     ? "text-small font-medium text-ink-max"
-                    : "text-small font-medium text-ink no-underline hover:text-ink-max"
+                    : "link-ui text-small font-medium text-ink"
                 }
               >
                 {ui[item.key][locale]}

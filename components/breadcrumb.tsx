@@ -32,7 +32,7 @@ export function Breadcrumb({ label, items }: { label: string; items: Crumb[] }) 
                 </span>
               ) : null}
               {item.href ? (
-                <Link href={item.href} className="label hover:text-ink-max">
+                <Link href={item.href} className="link-ui label">
                   {item.label}
                 </Link>
               ) : (

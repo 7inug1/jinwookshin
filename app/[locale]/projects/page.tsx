@@ -25,12 +25,14 @@ export default async function ProjectsPage({ params }: Props) {
             <li key={project.slug} className="py-gap-1">
               <a
                 href={`#${project.slug}`}
-                className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-gap-2 no-underline"
+                className="group/toc grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-gap-2 no-underline"
               >
                 <span className="font-mono text-small text-ink-2 select-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="underline underline-offset-2">{project.title}</span>
+                <span className="underline underline-offset-2 transition-colors group-hover/toc:text-ink-max group-hover/toc:decoration-2">
+                  {project.title}
+                </span>
                 <span className="label">{project.year}</span>
               </a>
             </li>

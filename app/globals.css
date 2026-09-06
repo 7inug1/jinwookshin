@@ -76,15 +76,20 @@
     font-weight: 500;
   }
 
+  /* 본문 링크 — 밑줄이 항상 있고 호버에 굵어진다 */
   a {
     color: inherit;
     text-decoration: underline;
     text-underline-offset: 0.2em;
     text-decoration-thickness: from-font;
+    transition:
+      color 150ms,
+      text-decoration-thickness 150ms;
   }
 
   a:hover {
     color: var(--color-ink-max);
+    text-decoration-thickness: 2px;
   }
 
   a:focus-visible {
@@ -121,6 +126,19 @@
 
   .prose > * + * {
     margin-top: 1.1em;
+  }
+
+  /* UI 링크 — 밑줄이 없다가 호버에 생긴다 */
+  .link-ui {
+    text-decoration: none;
+    transition: color 150ms;
+  }
+
+  .link-ui:hover {
+    color: var(--color-ink-max);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 1px;
   }
 
   .rule-list > * {

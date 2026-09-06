@@ -17,12 +17,17 @@ export default async function BlogPage({ params }: Props) {
   return (
     <>
       <h1 className="display">{ui.blog[locale]}</h1>
-      <ul className="rule-list mt-gap-4">
+      <ul className="mt-gap-4 border-t border-rule">
         {posts.map((post) => (
-          <li key={post.slug} className="py-gap-3">
+          <li
+            key={post.slug}
+            className="group -mx-gap-3 border-b border-rule px-gap-3 py-gap-3 transition-colors last:border-b-0 hover:bg-surface"
+          >
             <Link href={`/${locale}/blog/${post.slug}`} className="no-underline">
               <div className="flex items-baseline justify-between gap-gap-3">
-                <h2 className="text-title text-ink-max">{post.title[locale]}</h2>
+                <h2 className="text-title text-ink-max group-hover:underline group-hover:underline-offset-4">
+                  {post.title[locale]}
+                </h2>
                 <time dateTime={post.date} className="label shrink-0">
                   {post.date}
                 </time>
