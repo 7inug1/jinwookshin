@@ -18,7 +18,7 @@ export function Portrait({ locale }: { locale: Locale }) {
           sizes="(min-width: 44rem) 704px, 100vw"
           /* 역광이라 인물이 배경보다 어둡다. 밝기와 대비를 올리고 채도는 낮춘다 */
           style={{ filter: "brightness(1.06) contrast(1.08) saturate(0.92)" }}
-          className="h-auto w-full rounded-[6px] border border-rule"
+          className="h-auto w-full rounded-[10px] border border-rule"
         />
         <figcaption className="label mt-gap-1 text-right">{site.photoCaption[locale]}</figcaption>
       </figure>
