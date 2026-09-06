@@ -68,7 +68,17 @@ export default async function ProjectPage({ params }: Props) {
                   label: ui.links[locale],
                   value: (
                     <span className="flex flex-wrap gap-gap-3">
-                      <a href={project.live}>{ui.live[locale]} ↗</a>
+                      {project.liveDisabled ? (
+                        <span
+                          aria-disabled="true"
+                          title={ui.livePreparing[locale]}
+                          className="cursor-not-allowed text-ink-2 line-through"
+                        >
+                          {ui.live[locale]}
+                        </span>
+                      ) : (
+                        <a href={project.live}>{ui.live[locale]} ↗</a>
+                      )}
                       {project.repo ? <a href={project.repo}>{ui.repo[locale]} ↗</a> : null}
                     </span>
                   ),

@@ -10,6 +10,7 @@ export const ui = {
   stack: { ko: "스택", en: "Stack" },
   links: { ko: "링크", en: "Links" },
   live: { ko: "라이브", en: "Live" },
+  livePreparing: { ko: "준비 중", en: "Not public yet" },
   repo: { ko: "저장소", en: "Repo" },
   decisionsHeading: { ko: "결정과 측정", en: "Decisions and measurements" },
   notFound: { ko: "여기에는 아무것도 없다.", en: "Nothing lives here." },

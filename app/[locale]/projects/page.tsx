@@ -70,7 +70,7 @@ export default async function ProjectsPage({ params }: Props) {
                 sizes="(min-width: 64rem) 256px, 100vw"
                 hover
               />
-              <div className="min-w-0">
+              <div className="flex min-w-0 flex-col">
                 <p className="measure text-small">{project.summary[locale]}</p>
 
                 {project.stackLayout === "list" ? (
@@ -86,8 +86,21 @@ export default async function ProjectsPage({ params }: Props) {
                 )}
 
                 {/* 덮개 위로 올려 개별 링크가 계속 눌리게 한다 */}
-                <p className="relative z-10 mt-gap-2 flex flex-wrap gap-gap-3 text-small">
-                  {project.live ? <a href={project.live}>{ui.live[locale]} ↗</a> : null}
+                {/* 스택 길이와 상관없이 링크는 항상 맨 아래 */}
+                <p className="relative z-10 mt-auto flex flex-wrap gap-gap-3 pt-gap-3 text-small">
+                  {project.live ? (
+                    project.liveDisabled ? (
+                      <span
+                        aria-disabled="true"
+                        title={ui.livePreparing[locale]}
+                        className="cursor-not-allowed text-ink-2 line-through"
+                      >
+                        {ui.live[locale]}
+                      </span>
+                    ) : (
+                      <a href={project.live}>{ui.live[locale]} ↗</a>
+                    )
+                  ) : null}
                   {project.repo ? <a href={project.repo}>{ui.repo[locale]} ↗</a> : null}
                 </p>
               </div>

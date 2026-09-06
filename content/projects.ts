@@ -7,6 +7,8 @@ export type Project = {
   summary: L;
   stack: string[];
   live?: string;
+  /** 아직 열 수 없는 링크. 눌리지 않게 표시만 한다 */
+  liveDisabled?: boolean;
   repo?: string;
   image?: { src: string; alt: L };
   /** 화면 비율. 기본은 16:10, 세로가 긴 화면은 3:4 */
@@ -29,6 +31,7 @@ export const projects: Project[] = [
     },
     stack: ["React", "FastAPI", "Supadata", "KURE-v1", "pgvector", "Claude Haiku", "Vercel"],
     live: "https://digestube.vercel.app",
+    liveDisabled: true,
     shot: "transcript",
     image: {
       src: "/shot-digestube-2.jpg",
