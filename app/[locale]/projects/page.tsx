@@ -43,7 +43,7 @@ export default async function ProjectsPage({ params }: Props) {
           <article
             key={project.slug}
             id={project.slug}
-            className="group relative scroll-mt-gap-3 border-t border-rule py-gap-4 transition-colors hover:border-ink has-[a:focus-visible]:border-ink"
+            className="group relative -mx-gap-3 scroll-mt-gap-3 border-t border-rule px-gap-3 py-gap-4 transition-colors hover:border-ink hover:bg-surface has-[a:focus-visible]:border-ink has-[a:focus-visible]:bg-surface"
           >
             <div className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-gap-2">
               <span className="font-mono text-small text-ink-2 select-none">
