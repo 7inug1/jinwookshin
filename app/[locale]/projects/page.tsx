@@ -64,14 +64,14 @@ export default async function ProjectsPage({ params }: Props) {
               <p className="label shrink-0">{project.year}</p>
             </div>
 
-            <div className="mt-gap-3 grid gap-gap-4 lg:grid-cols-[20rem_1fr]">
+            <div className="mt-gap-3 grid gap-gap-4 lg:grid-cols-[16rem_1fr]">
               {project.image ? (
                 <Image
                   src={project.image.src}
                   alt={project.image.alt[locale]}
                   width={640}
                   height={400}
-                  sizes={"(min-width: 64rem) 288px, 100vw"}
+                  sizes={"(min-width: 64rem) 256px, 100vw"}
                   className="h-auto w-full border border-rule transition-colors duration-[var(--dur)] ease-[var(--ease)] group-hover:border-ink"
                 />
               ) : (

@@ -9,13 +9,13 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
   return (
     <>
       <section>
-        {/* 사진과 글이 같은 65ch 상자를 쓴다. 왼쪽 끝이 아래 목록과도 맞는다 */}
-        <div className="w-[min(100%,65ch)]">
+        {/* 컨테이너 자체가 읽기 폭이라 사진과 글이 같은 상자를 쓴다 */}
+        <div>
           <Portrait locale={locale} />
         </div>
 
         {/* 표제와 본문을 한 상자에 담아 왼쪽 시작점을 묶는다 */}
-        <div className="measure mt-gap-4">
+        <div className="mt-gap-4">
           <h1 className="display-sm">{site.greeting[locale]}</h1>
           <div className="prose mt-gap-3">
             <p>{site.intro[locale]}</p>

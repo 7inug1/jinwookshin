@@ -29,7 +29,7 @@
   :root {
     /* 사이트 전체가 쓰는 단 하나의 가로 규격 */
     --gutter: clamp(1.25rem, 4vw, 2.5rem);
-    --content: 56rem;
+    --content: 44rem;
 
     /* 모든 호버가 같은 시간과 같은 가속도를 쓴다 */
     --dur: 150ms;
