@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { ProjectShot } from "@/components/project-shot";
 import { ExternalLink } from "@/components/external-link";
@@ -141,12 +142,12 @@ export default async function ProjectsPage({ params }: Props) {
               </div>
 
               <div className="mt-gap-3 grid gap-gap-4 lg:grid-cols-[16rem_1fr]">
-                <img
+                <Image
                   src={item.image.src}
                   alt={item.image.alt[locale]}
-                  width={900}
-                  height={1235}
-                  loading="lazy"
+                  width={item.image.width}
+                  height={item.image.height}
+                  sizes="(min-width: 64rem) 256px, 100vw"
                   className="frame h-auto w-full transition-colors duration-[var(--dur)] ease-[var(--ease)] group-hover:border-ink"
                 />
 

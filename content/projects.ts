@@ -8,7 +8,7 @@ export type Project = {
   stack: string[];
   live?: string;
   repo?: string;
-  image?: { src: string; alt: L };
+  image?: { src: string; alt: L; width: number; height: number };
   /** 화면 비율. 기본은 16:10, 세로가 긴 화면은 3:4 */
   imageAspect?: "16/10" | "3/4";
   /** 목록에서 스택을 세우는 방식. 이미지가 길면 세로로 세워 높이를 맞춘다 */
@@ -31,6 +31,8 @@ export const projects: Project[] = [
     shot: "transcript",
     image: {
       src: "/shot-dg-1.jpg",
+      width: 900,
+      height: 5523,
       alt: {
         ko: "Digestube 화면. 왼쪽에 목차, 오른쪽에 타임스탬프가 붙은 전사문이 이어진다",
         en: "Digestube. A table of contents on the left, timestamped transcript on the right",
@@ -126,6 +128,8 @@ export const projects: Project[] = [
     shot: "grid",
     image: {
       src: "/shot-vz-1.jpg",
+      width: 800,
+      height: 6102,
       alt: {
         ko: "VIZUDEN 보고서 화면. 인물 사진과 스타일 진단 문단이 이어진다",
         en: "A VIZUDEN report. Portraits followed by the style diagnosis",
@@ -196,6 +200,8 @@ export const archive = [
     url: "https://7inug1.github.io",
     image: {
       src: "/shot-ar-1.jpg",
+      width: 900,
+      height: 1235,
       alt: {
         ko: "7inug1.github.io 화면. React · JavaScript · HTML/CSS로 나눈 목차와 프로젝트 목록",
         en: "7inug1.github.io. A contents list split into React, JavaScript, and HTML/CSS",

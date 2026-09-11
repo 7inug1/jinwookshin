@@ -32,8 +32,8 @@ export function ProjectShot({
     <Image
       src={project.image.src}
       alt={project.image.alt[locale]}
-      width={800}
-      height={800}
+      width={project.image.width}
+      height={project.image.height}
       sizes={sizes}
       className={`${aspect[project.imageAspect ?? "16/10"]} w-full object-cover object-top ${border}`}
     />
