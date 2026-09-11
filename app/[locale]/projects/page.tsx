@@ -145,9 +145,9 @@ export default async function ProjectsPage({ params }: Props) {
                   src={item.image.src}
                   alt={item.image.alt[locale]}
                   width={900}
-                  height={563}
+                  height={1235}
                   loading="lazy"
-                  className="frame aspect-[16/10] w-full object-cover object-top transition-colors duration-[var(--dur)] ease-[var(--ease)] group-hover:border-ink"
+                  className="frame h-auto w-full transition-colors duration-[var(--dur)] ease-[var(--ease)] group-hover:border-ink"
                 />
 
                 <div className="flex min-w-0 flex-col">
