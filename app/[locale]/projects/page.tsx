@@ -115,30 +115,51 @@ export default async function ProjectsPage({ params }: Props) {
         ))}
       </div>
 
-      {/* 보관. 번호 체계 밖에 두고 카드 형식도 쓰지 않는다 */}
+      {/* 아카이브. 카드 형식은 같게 두고 번호만 줄표로 구분한다 */}
       <section id="archive" className="mt-gap-5 scroll-mt-gap-3 border-t border-ink pt-gap-3">
         <h2 className="label">{ui.archive[locale]}</h2>
-        <ul className="mt-gap-2">
+
+        <div className="mt-gap-2">
           {archive.map((item) => (
-            <li key={item.title} className="grid grid-cols-[3.5rem_1fr] gap-gap-2 py-gap-2">
-              <span className="font-mono text-small text-ink-2 select-none">{item.year}</span>
-              <div className="min-w-0">
-                <p className="text-small">
-                  <ExternalLink href={item.url}>{item.title}</ExternalLink>
-                </p>
-                <p className="measure mt-gap-1 text-small text-ink-2">{item.note[locale]}</p>
+            <article
+              key={item.title}
+              className="group relative -mx-gap-2 px-gap-2 py-gap-4 transition-colors duration-[var(--dur)] ease-[var(--ease)] hover:bg-surface"
+            >
+              <div className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-gap-2">
+                <span className="font-mono text-small text-ink-2 select-none">—</span>
+                <h3 className="min-w-0 text-title">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ink-max no-underline after:absolute after:inset-0 after:content-['']"
+                  >
+                    {item.title}
+                  </a>
+                </h3>
+                <p className="label shrink-0">{item.year}</p>
+              </div>
+
+              <div className="mt-gap-3 grid gap-gap-4 lg:grid-cols-[16rem_1fr]">
                 <img
                   src={item.image.src}
                   alt={item.image.alt[locale]}
                   width={900}
                   height={563}
                   loading="lazy"
-                  className="frame mt-gap-2 aspect-[16/10] w-[min(100%,22rem)] object-cover object-top"
+                  className="frame aspect-[16/10] w-full object-cover object-top transition-colors duration-[var(--dur)] ease-[var(--ease)] group-hover:border-ink"
                 />
+
+                <div className="flex min-w-0 flex-col">
+                  <p className="measure text-small">{item.note[locale]}</p>
+                  <p className="relative z-10 mt-auto flex flex-wrap gap-gap-3 pt-gap-3 text-small">
+                    <ExternalLink href={item.url}>{ui.live[locale]}</ExternalLink>
+                  </p>
+                </div>
               </div>
-            </li>
+            </article>
           ))}
-        </ul>
+        </div>
       </section>
     </>
   );

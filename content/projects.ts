@@ -202,8 +202,8 @@ export const archive = [
       },
     },
     note: {
-      ko: "바닐라 코딩 부트캠프를 마치고 만든 첫 포트폴리오. 지금 기준으로는 학습 기록에 가깝지만 여기서 시작했다.",
-      en: "My first portfolio, built right after the Vanilla Coding bootcamp. Closer to a learning log by today's standards, but this is where it started.",
+      ko: "바닐라 코딩 부트캠프를 마치고 첫 구직을 준비하며 만든 포트폴리오. React·JavaScript·HTML/CSS로 만든 작업을 모아 뒀다.",
+      en: "The portfolio I built while preparing for my first job search, right after the Vanilla Coding bootcamp. It collects the work I made in React, JavaScript, and HTML/CSS.",
     } satisfies L,
   },
 ];
