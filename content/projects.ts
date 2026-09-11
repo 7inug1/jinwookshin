@@ -1,4 +1,5 @@
 import type { L } from "./i18n";
+import { assertSlugs } from "./slug";
 
 export type Project = {
   slug: string;
@@ -189,6 +190,8 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+assertSlugs("프로젝트", projects.map((item) => item.slug));
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
 

@@ -1,4 +1,5 @@
 import type { L } from "./i18n";
+import { assertSlugs } from "./slug";
 
 export type Block =
   | { type: "p"; text: L }
@@ -22,7 +23,7 @@ const rule: Block = { type: "rule" };
 
 export const posts: Post[] = [
   {
-    slug: "bi-encoder-chunk-rank",
+    slug: "bi-encoder-rank",
     title: {
       ko: "bi-encoder에서 정답 청크는 항상 검색 순위 최상위권에 들까?",
       en: "Does the right chunk always rank at the top with a bi-encoder?",
@@ -175,5 +176,7 @@ export const posts: Post[] = [
     ],
   },
 ];
+
+assertSlugs("글", posts.map((item) => item.slug));
 
 export const getPost = (slug: string) => posts.find((post) => post.slug === slug);
