@@ -6,6 +6,7 @@ export const ui = {
   projects: { ko: "Projects", en: "Projects" },
   blog: { ko: "Blog", en: "Blog" },
   toc: { ko: "목차", en: "Contents" },
+  archive: { ko: "보관", en: "Archive" },
   tocLabel: { ko: "프로젝트 목차", en: "Project contents" },
   stack: { ko: "스택", en: "Stack" },
   links: { ko: "링크", en: "Links" },

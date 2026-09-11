@@ -187,3 +187,16 @@ export const projects: Project[] = [
 ];
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+
+/** 보관. 지금 작업과 성격이 달라 프로젝트 목록 밖에 둔다 */
+export const archive = [
+  {
+    year: "2022",
+    title: "7inug1.github.io",
+    url: "https://7inug1.github.io",
+    note: {
+      ko: "바닐라 코딩 부트캠프를 마치고 만든 첫 포트폴리오. 지금 기준으로는 학습 기록에 가깝지만 여기서 시작했다.",
+      en: "My first portfolio, built right after the Vanilla Coding bootcamp. Closer to a learning log by today's standards, but this is where it started.",
+    } satisfies L,
+  },
+];

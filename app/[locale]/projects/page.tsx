@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ProjectShot } from "@/components/project-shot";
 import { ExternalLink } from "@/components/external-link";
-import { projects } from "@/content/projects";
+import { projects, archive } from "@/content/projects";
 import { ui } from "@/content/ui";
 import type { Locale } from "@/content/i18n";
 
@@ -102,6 +102,24 @@ export default async function ProjectsPage({ params }: Props) {
           </article>
         ))}
       </div>
+
+      {/* 보관. 번호 체계 밖에 두고 카드 형식도 쓰지 않는다 */}
+      <section className="mt-gap-5 border-t border-ink pt-gap-3">
+        <h2 className="label">{ui.archive[locale]}</h2>
+        <ul className="mt-gap-2">
+          {archive.map((item) => (
+            <li key={item.title} className="grid grid-cols-[3.5rem_1fr] gap-gap-2 py-gap-2">
+              <span className="font-mono text-small text-ink-2 select-none">{item.year}</span>
+              <div className="min-w-0">
+                <p className="text-small">
+                  <ExternalLink href={item.url}>{item.title}</ExternalLink>
+                </p>
+                <p className="measure mt-gap-1 text-small text-ink-2">{item.note[locale]}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
     </>
   );
 }
