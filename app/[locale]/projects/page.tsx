@@ -38,6 +38,18 @@ export default async function ProjectsPage({ params }: Props) {
               </a>
             </li>
           ))}
+          {archive.map((item) => (
+            <li key={item.title} className="py-gap-1">
+              <a
+                href="#archive"
+                className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-gap-2 no-underline"
+              >
+                <span className="font-mono text-small text-ink-2 select-none">—</span>
+                <span className="min-w-0 underline underline-offset-2">{ui.archive[locale]}</span>
+                <span className="label">{item.year}</span>
+              </a>
+            </li>
+          ))}
         </ol>
       </nav>
 
@@ -104,7 +116,7 @@ export default async function ProjectsPage({ params }: Props) {
       </div>
 
       {/* 보관. 번호 체계 밖에 두고 카드 형식도 쓰지 않는다 */}
-      <section className="mt-gap-5 border-t border-ink pt-gap-3">
+      <section id="archive" className="mt-gap-5 scroll-mt-gap-3 border-t border-ink pt-gap-3">
         <h2 className="label">{ui.archive[locale]}</h2>
         <ul className="mt-gap-2">
           {archive.map((item) => (
@@ -115,6 +127,14 @@ export default async function ProjectsPage({ params }: Props) {
                   <ExternalLink href={item.url}>{item.title}</ExternalLink>
                 </p>
                 <p className="measure mt-gap-1 text-small text-ink-2">{item.note[locale]}</p>
+                <img
+                  src={item.image.src}
+                  alt={item.image.alt[locale]}
+                  width={900}
+                  height={563}
+                  loading="lazy"
+                  className="frame mt-gap-2 aspect-[16/10] w-[min(100%,22rem)] object-cover object-top"
+                />
               </div>
             </li>
           ))}
