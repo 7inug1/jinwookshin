@@ -4,7 +4,8 @@ import { assertSlugs } from "./slug";
 export type Project = {
   slug: string;
   title: string;
-  year: string;
+  /** 언어마다 표기가 다를 수 있다 (예: 현재 / Present) */
+  year: L;
   summary: L;
   stack: string[];
   live?: string;
@@ -23,12 +24,12 @@ export const projects: Project[] = [
   {
     slug: "digestube",
     title: "Digestube",
-    year: "2026.08",
+    year: { ko: "2026.08 - 현재", en: "2026.08 - Present" },
     summary: {
-      ko: "유튜브 영상을 책처럼 읽는 서비스. 주소를 받아 전사하고 문단으로 나눠 임베딩한 뒤, 질문과 뜻이 가까운 문단을 찾아 답한다.",
-      en: "Reads a YouTube video like a book. It transcribes a URL, splits the text into passages, embeds them, and answers questions from the passages closest in meaning.",
+      ko: "유튜브 영상을 책처럼 읽는 서비스. 주소를 받아 전사하고 문단과 목차로 정리한 뒤, 질문과 뜻이 가까운 문단과 해당 영상 시점을 찾아 준다.",
+      en: "Reads a YouTube video like a book. It transcribes a URL, organises the text into passages and a table of contents, and finds the passages, and the moments in the video, closest in meaning to a question.",
     },
-    stack: ["React", "FastAPI", "Supadata", "KURE-v1", "pgvector", "Claude Haiku", "Vercel"],
+    stack: ["PostgreSQL", "pgvector", "Supabase", "Gemini API", "KURE-v1", "TypeScript", "Next.js", "Vercel"],
     shot: "transcript",
     image: {
       src: "/shot-dg-1.jpg",
@@ -46,18 +47,18 @@ export const projects: Project[] = [
           en: "Transcription",
         },
         text: {
-          ko: "yt-dlp와 mlx-whisper 조합이 로컬에서는 잘 돌았지만, 서버에서는 데이터센터 IP 대역이라는 이유로 차단됐다. 배포된 서비스에서도 운영할 수 있는 외부 전사 API(Supadata)로 전환했다.",
-          en: "yt-dlp with mlx-whisper worked fine locally, but on the server it was blocked for coming from a data-centre IP range. I moved to an external transcription API (Supadata) that keeps working in production.",
+          ko: "yt-dlp와 Whisper 조합이 로컬에서는 잘 돌았지만, 배포 서버에서는 유튜브 접근이 차단됐다. 외부 전사 API(Supadata)는 구두점 없는 자막과 요청 실패가 이어져, 유튜브 주소를 직접 받는 Gemini API로 바꿨다. 측정 전에 기준을 먼저 정하고 한국어 영상 6편에 시험해 통과를 확인했다.",
+          en: "yt-dlp with Whisper worked fine locally, but the deployed server was blocked from reaching YouTube. An external transcription API (Supadata) gave captions without punctuation and failed requests, so I moved to the Gemini API, which takes a YouTube URL directly. I set the pass criteria before measuring and confirmed them on six Korean videos.",
         },
       },
       {
         label: {
-          ko: "청킹",
-          en: "Chunking",
+          ko: "문단",
+          en: "Passages",
         },
         text: {
-          ko: "문단이 검색의 단위이므로 가독성(문장 끊김)과 문단 크기를 기준으로 네 가지를 비교했고, 문장 끝과 길이를 함께 보는 recursive splitting을 적용했다.",
-          en: "The passage is the unit of retrieval, so I compared four methods on readability (whether sentences get cut) and passage size, and applied recursive splitting on sentence boundaries plus length.",
+          ko: "고정 길이는 문장 중간을 잘랐고, 문장 경계 방식은 하나의 설명을 뜻과 무관한 길이에서 나눴다. 모델에는 화제가 시작되는 문장 번호만 고르게 하고, 원문은 코드가 그대로 보존한다. 실패하면 문장 경계 방식으로 되돌린다.",
+          en: "Fixed-length splits cut sentences in half, and sentence-boundary splits still broke one explanation at arbitrary lengths. The model now only picks the sentence numbers where a topic starts, and the code keeps the original text intact. If that fails it falls back to sentence boundaries.",
         },
       },
       {
@@ -66,8 +67,8 @@ export const projects: Project[] = [
           en: "Embeddings",
         },
         text: {
-          ko: "한국어 검색 성능을 기준으로 BGE-M3을 골랐다. 이 모델이 외부 API에서 중단된 뒤 같은 차원(1024)의 KURE-v1으로 교체해 저장된 벡터를 다시 만들지 않고 대응했다.",
-          en: "I picked BGE-M3 for Korean retrieval quality. After it was discontinued on the external API, I swapped in KURE-v1, which has the same 1024 dimensions, so the stored vectors did not have to be rebuilt.",
+          ko: "KURE-v1과 BGE-M3를 같은 조건(89문단, 답이 있는 질문 8개, 상위 3개)으로 비교했다. 교체 조건을 먼저 정했고, BGE-M3가 조건을 충족하지 못해 KURE-v1을 유지했다.",
+          en: "I compared KURE-v1 and BGE-M3 under the same conditions (89 passages, eight answerable questions, top 3). The switching rule was fixed first; BGE-M3 did not meet it, so KURE-v1 stayed.",
         },
       },
       {
@@ -76,8 +77,8 @@ export const projects: Project[] = [
           en: "Contents",
         },
         text: {
-          ko: "제목과 함께 근거 문장을 받아 전사문에 실제로 있는지 대조하고, 확인되지 않으면 저장하지 않도록 구현했다.",
-          en: "The model returns a heading together with the sentence it came from. I check that sentence against the transcript and discard the heading when it is not found.",
+          ko: "문단마다 제목을 붙이면 목차가 너무 많아져, 전사문 전체에서 주요 목차를 만든다. 제목과 함께 근거 문장을 받아 전사문에 실제로 있는지 대조하고, 확인되지 않으면 저장하지 않는다.",
+          en: "One heading per passage made the contents far too long, so the main headings are now built from the whole transcript. The model returns each heading with the sentence it came from; I check that sentence against the transcript and discard the heading when it is not found.",
         },
       },
       {
@@ -92,26 +93,26 @@ export const projects: Project[] = [
       },
       {
         label: {
-          ko: "물어보기",
-          en: "Answering",
+          ko: "검색 순서",
+          en: "Ranking",
         },
         text: {
-          ko: "같은 방식으로 찾은 문단만 근거로 답변을 만들고, 유사도가 기준 미만이면 답하지 않는다.",
-          en: "Answers are generated only from the passages retrieved, and when similarity falls below the threshold it does not answer at all.",
+          ko: "관련 문단이 후보에는 있지만 순위가 밀리는 문제를 확인하고 리랭커를 붙였다. 개발용 질문 8건의 필수 근거 17개 중 상위 3개에 든 근거가 6개에서 8개로 늘었다. 결과를 먼저 보여 주고, 5초 안에 재정렬이 끝나지 않으면 원래 순서를 유지한다.",
+          en: "The right passages were among the candidates but ranked too low, so I added a reranker. On eight development questions, the required evidence in the top 3 rose from 6 to 8 of 17. Results appear first, and if reranking does not finish within five seconds the original order stays.",
         },
       },
     ],
     body: [
       {
         text: {
-          ko: "유튜브 주소를 받아 외부 전사 API로 전사하고, 문단으로 나눠 임베딩한 후, 질문과 뜻이 가까운 문단을 찾아 답하는 RAG 서비스다. 수집부터 화면과 배포까지 혼자 진행했다.",
-          en: "Give it a YouTube URL and it transcribes through an external API, splits the text into passages, embeds them, and answers by finding the passages closest in meaning to the question. I built the whole path alone, from ingestion to interface to deploy.",
+          ko: "유튜브 주소를 받아 Gemini API로 전사하고, 문단과 목차로 정리해 임베딩한 뒤, 질문과 뜻이 가까운 문단과 영상 시점을 찾아 주는 의미 검색 서비스다. 수집부터 화면과 배포까지 혼자 진행했다.",
+          en: "Give it a YouTube URL and it transcribes through the Gemini API, organises the text into passages and a table of contents, embeds them, and finds the passages and video moments closest in meaning to a question. I built the whole path alone, from ingestion to interface to deploy.",
         },
       },
       {
         text: {
-          ko: "검색은 글자 일치가 아니라 임베딩 유사도로 문단을 찾고 근거 문장과 함께 보여준다. 물어보기는 그렇게 찾은 문단만 근거로 답을 만든다.",
-          en: "Search finds passages by embedding similarity rather than string matching and shows the sentence it rests on. Asking a question generates the answer from those passages and nothing else.",
+          ko: "검색은 글자 일치가 아니라 임베딩 유사도로 문단을 찾고 관련 문장을 강조해 보여 준다. 근거를 안정적으로 찾는 것이 먼저라고 보고, 답변 생성은 아직 붙이지 않았다.",
+          en: "Search finds passages by embedding similarity rather than string matching and highlights the related sentence. Finding the evidence reliably comes first, so answer generation is not attached yet.",
         },
       },
     ],
@@ -119,7 +120,7 @@ export const projects: Project[] = [
   {
     slug: "vizuden",
     title: "VIZUDEN",
-    year: "2026.03–06",
+    year: { ko: "2026.03 - 2026.08", en: "2026.03 - 2026.08" },
     summary: {
       ko: "정체성 기반 스타일 진단 AI 서비스. 설문 응답을 Claude API로 분석해 남성 사용자에게 스타일 방향과 브랜드를 제안한다.",
       en: "An identity-based style diagnosis service. It analyses survey answers with the Claude API and proposes a direction and brands for men.",
@@ -165,8 +166,8 @@ export const projects: Project[] = [
           en: "Charts",
         },
         text: {
-          ko: "예산 배분 하나를 보여주려고 라이브러리를 들이지 않고 SVG 도넛 차트를 직접 그렸다. 추천 아이템은 보고서가 만들어지는 도중에 네이버 쇼핑에서 조회해 이미지·가격과 함께 붙였다.",
-          en: "One budget breakdown did not justify a dependency, so I drew the donut chart in SVG. Recommended items are fetched from Naver Shopping while the report is still being generated and attached with image and price.",
+          ko: "예산 배분 하나를 보여주려고 라이브러리를 들이지 않고 SVG 도넛 차트를 직접 그렸다.",
+          en: "One budget breakdown did not justify a dependency, so I drew the donut chart in SVG.",
         },
       },
       {
@@ -183,8 +184,8 @@ export const projects: Project[] = [
     body: [
       {
         text: {
-          ko: "설문 응답을 Claude API로 분석해 스타일 방향과 브랜드를 제안하는 AI 보고서 서비스다. 기획과 개발, 배포를 개인으로 진행하고 도메인을 사서 운영했다.",
-          en: "An AI report service that analyses survey answers with the Claude API and proposes a style direction and brands. I designed, built, and shipped it alone, then bought a domain and ran it.",
+          ko: "설문 응답을 Claude API로 분석해 스타일 방향과 브랜드를 제안하는 AI 보고서 서비스다. 기획과 개발, 배포를 개인으로 진행하고 도메인을 사서 운영했다. 지금은 신규 운영을 멈추고 유지보수 중이다.",
+          en: "An AI report service that analyses survey answers with the Claude API and proposes a style direction and brands. I designed, built, and shipped it alone, then bought a domain and ran it. New sign-ups are now paused and it is in maintenance.",
         },
       },
     ],

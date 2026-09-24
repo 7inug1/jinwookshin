@@ -35,7 +35,7 @@ export default async function ProjectsPage({ params }: Props) {
                 <span className="underline underline-offset-2">
                   {project.title}
                 </span>
-                <span className="label">{project.year}</span>
+                <span className="label">{project.year[locale]}</span>
               </a>
             </li>
           ))}
@@ -74,7 +74,7 @@ export default async function ProjectsPage({ params }: Props) {
                   {project.title}
                 </Link>
               </h2>
-              <p className="label shrink-0">{project.year}</p>
+              <p className="label shrink-0">{project.year[locale]}</p>
             </div>
 
             <div className="mt-gap-3 grid gap-gap-4 lg:grid-cols-[16rem_1fr]">
