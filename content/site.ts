@@ -30,8 +30,8 @@ export const site = {
     en: "A single prompt can spin up a service these days, but the hard part turns out to be setting the standards and building to them. I felt it most while building Digestube, deciding which passages count as evidence to show and what to do when there is none. A developer's domain knowledge and clear judgment are the parts AI cannot supply — and the parts worth putting more weight on.",
   } satisfies L,
   availability: {
-    ko: "현재 AI 애플리케이션 엔지니어 및 AI 프로덕트 엔지니어쪽으로 관심을 가지며 다시 한 번 산업에 기여할 기회를 찾고 있습니다.",
-    en: "I am drawn to AI application and AI product engineering, and I am looking for a chance to contribute to the industry again.",
+    ko: "지금은 다시 한 번 산업에 기여할 기회를 찾고 있습니다.",
+    en: "I am now looking for a chance to contribute to the industry again.",
   } satisfies L,
 };
 
