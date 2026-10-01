@@ -105,6 +105,36 @@ export const projects: Project[] = [
       },
       {
         label: {
+          ko: "평가",
+          en: "Evaluation",
+        },
+        text: {
+          ko: "질문 30개를 직접 검수해, 고칠 때 쓰는 개발용 15개와 개선이 끝난 뒤 한 번만 푸는 검증용 15개로 나눴다. 검증용 15개 중 14개에서 영상 속 근거로 답할 수 있는 질문인지를 맞게 판단했고, 답이 없는 질문 4개에는 모두 답하지 않았다.",
+          en: "I reviewed 30 questions by hand and split them into 15 for development and 15 held out until the work was done. On the held-out set, it judged correctly in 14 of 15 whether the videos could answer the question, and declined all four questions with no answer in the videos.",
+        },
+      },
+      {
+        label: {
+          ko: "물어보기",
+          en: "Answers",
+        },
+        text: {
+          ko: "검증용 15개 중 11개를 맞게 처리했다(맞게 답함 7, 답이 없는 질문 거절 4). 일부만 맞은 3개는 모두 여러 영상에 걸친 질문에서 두 번째 영상을 찾지 못한 경우였다. 채점은 사람이 아닌 Claude가 했다.",
+          en: "It handled 11 of the 15 held-out questions correctly: 7 correct answers and 4 correct refusals. The 3 partly correct answers were all multi-video questions where the second video was missed. Grading was done by Claude, not by a person.",
+        },
+      },
+      {
+        label: {
+          ko: "쓰지 않은 방식",
+          en: "Rejected approach",
+        },
+        text: {
+          ko: "전사 비용을 줄이려고 영상 대신 음성만 Gemini에 넘겨 봤다. 비용은 약 24% 줄었지만(비교 가능한 5편 기준 추정), 6편 중 1편은 재생 시각이 밀리고 1편은 \"음\" 같은 군말을 더 많이 받아써 기존 자막과 맞춰 볼 수 있는 부분이 35%에 그쳐, 미리 정한 기준을 넘지 못해 쓰지 않았다.",
+          en: "To cut transcription cost, I tried sending audio only instead of the video. Estimated cost fell about 24% on five comparable videos, but one of six videos drifted in timestamps and another transcribed many more filler words such as \"um,\" leaving only 35% comparable with the existing captions, so it missed the criteria I had set in advance and I did not adopt it.",
+        },
+      },
+      {
+        label: {
           ko: "운영 점검",
           en: "Operational check"
         },
@@ -129,8 +159,8 @@ export const projects: Project[] = [
       },
       {
         text: {
-          ko: "검색은 글자 일치가 아니라 임베딩 유사도로 문단을 찾고 관련 문장을 강조해 보여 준다. 근거를 안정적으로 찾는 것이 먼저라고 보고, 답변 생성은 아직 붙이지 않았다.",
-          en: "Search finds passages by embedding similarity rather than string matching and highlights the related sentence. Finding the evidence reliably comes first, so answer generation is not attached yet.",
+          ko: "검색은 글자 일치가 아니라 임베딩 유사도로 문단을 찾고 관련 문장을 강조해 보여 준다. 질문에 답할 때는 상위 문단 3개만 근거로 삼아 문장마다 근거 번호를 붙이고, 근거가 부족하면 지어내지 않고 \"찾지 못했어요\"로 답한다.",
+          en: "Search finds passages by embedding similarity rather than string matching and highlights the related sentence. When it answers a question, it uses only the top three passages as evidence and cites them sentence by sentence; when the evidence is not enough, it says it could not find an answer instead of making one up.",
         },
       },
     ],
@@ -138,7 +168,7 @@ export const projects: Project[] = [
   {
     slug: "vizuden",
     title: "VIZUDEN",
-    year: { ko: "2026.03 - 2026.08 · 이후 신규 운영 중단", en: "2026.03 - 2026.08 · New operations stopped" },
+    year: { ko: "2026.03 - 2026.06 · 이후 신규 운영 중단", en: "2026.03 - 2026.06 · New operations stopped" },
     summary: {
       ko: "정체성 기반 스타일 진단 AI 서비스. 설문 응답을 Claude API로 분석해 남성 사용자에게 스타일 방향과 브랜드를 제안한다.",
       en: "An identity-based style diagnosis service. It analyses survey answers with the Claude API and proposes a direction and brands for men.",
@@ -215,8 +245,8 @@ export const projects: Project[] = [
           en: "Quality review and operating decision"
         },
         text: {
-          ko: "AI 단독 보고서로 스타일리스트 수준의 추천을 제공하기 어렵다고 판단해 8월까지 신규 운영을 중단했다. 이후 9월 개발용 가상 사례 5건을 점검해 입력에 없는 심리 단정과 브랜드 정보 오류를 확인했다. 전문가 지식 구조화·사실 검증·사람 검수가 필요하다고 정리했다. 독립된 사용자 품질 평가는 아니다.",
-          en: "I stopped new operations by August after concluding that AI-only reports could not provide stylist-level recommendations. A subsequent September review of five development scenarios found unsupported psychological inferences and brand errors. Structured expert knowledge, fact checking and human review would be needed. This was not an independent user-quality evaluation."
+          ko: "세 가지 근거로 2026년 6월 중순 신규 운영을 중단했다. 옷을 즐기는 사람을 모으려던 방향이 실제 수요(속한 무리에 어울리기, 이성에게 돋보이기)와 달랐고, 직업·정체성과 브랜드를 잇는 지식 없이는 AI 추천이 일반론으로 흘렀으며, 첫 보고서 이후 계속 쓰게 할 이유를 만들기 어려웠다. 이후 9월 개발용 가상 사례 5건을 점검해 입력에 없는 심리 단정과 브랜드 정보 오류를 확인했다. 전문가 지식 구조화·사실 검증·사람 검수가 필요하다고 정리했다. 독립된 사용자 품질 평가는 아니다.",
+          en: "I stopped new operations in mid-June 2026 for three reasons: the direction of gathering people who enjoy clothes did not match actual demand (fitting in with a group, standing out to others), AI recommendations drifted into generic advice without knowledge linking jobs and identities to brands, and there was no reason to keep using the service after the first report. A subsequent September review of five development scenarios found unsupported psychological inferences and brand errors. Structured expert knowledge, fact checking and human review would be needed. This was not an independent user-quality evaluation."
         }
       },
     ],
@@ -229,8 +259,8 @@ export const projects: Project[] = [
       },
       {
         text: {
-          ko: "커뮤니티에서 베타 참여자를 모집해 보고서를 제공하고, 그중 4명과 오프라인 피팅을 진행했다. 4명은 피팅 참여자 수이며 전체 이용자 수가 아니다. 2026년 3~8월 기획·개발·운영 뒤 신규 운영을 중단했고, 9월에는 유지보수와 가상 사례 점검을 진행했다.",
-          en: "I recruited beta participants through a community, provided reports and held offline fittings with four of them. Four is the fitting participant count, not total users. Planning, development and operations ran from March to August 2026; September work focused on maintenance and synthetic-case review after new operations stopped."
+          ko: "커뮤니티에서 베타 참여자를 모집해 보고서를 제공하고, 그중 4명과 오프라인 피팅을 진행했다. 4명은 피팅 참여자 수이며 전체 이용자 수가 아니다. 2026년 3월부터 6월 중순까지 기획·개발·운영한 뒤 신규 운영을 중단했고, 이후 유지보수와 9월 가상 사례 점검을 진행했다.",
+          en: "I recruited beta participants through a community, provided reports and held offline fittings with four of them. Four is the fitting participant count, not total users. Planning, development and operations ran from March to mid-June 2026; after new operations stopped, the work focused on maintenance and a September synthetic-case review."
         }
       },
       {
